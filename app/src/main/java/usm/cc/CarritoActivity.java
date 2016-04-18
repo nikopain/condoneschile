@@ -50,12 +50,12 @@ public class CarritoActivity extends AppCompatActivity {
 
     public void setListCondoms(){
 
-        ListView listViewRamos = (ListView) findViewById(R.id.listViewCondoms);
+        ListView listViewCondoms = (ListView) findViewById(R.id.listViewCondoms);
         Condom[] condomsArray = listaProductos.toArray(new Condom[0]);
 
-        listViewRamos.setAdapter(new CondomListAdapter(this, condomsArray));
+        listViewCondoms.setAdapter(new CondomListAdapter(this, condomsArray));
 
-        listViewRamos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        listViewCondoms.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
             }

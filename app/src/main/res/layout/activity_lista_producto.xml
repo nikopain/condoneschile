@@ -9,4 +9,28 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="usm.cc.ListaProductoActivity">
 
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/listViewCondoms"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Carrito"
+        android:id="@+id/Carrito"
+        android:layout_alignParentBottom="true"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/settings"
+        android:text="config"
+        android:layout_toRightOf="@id/Carrito"
+        android:layout_alignParentBottom="true"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/salir"
+        android:text="salir"
+        android:layout_toRightOf="@id/settings"
+        android:layout_alignParentBottom="true"/>
 </RelativeLayout>

@@ -45,7 +45,7 @@
                     android:id="@+id/name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Nombre"
+                    android:hint="Dirección"
                     android:inputType="textAutoComplete"
                     android:maxLines="1"
                     android:singleLine="true"/>
@@ -59,7 +59,7 @@
                     android:id="@+id/lastname"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Apellido"
+                    android:hint="Ciudad"
                     android:inputType="textAutoComplete"
                     android:maxLines="1"
                     android:singleLine="true"/>
@@ -74,38 +74,21 @@
                     android:id="@+id/email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/prompt_email"
+                    android:hint="Código postal"
                     android:inputType="textEmailAddress"
                     android:maxLines="1"
                     android:singleLine="true" />
 
             </android.support.design.widget.TextInputLayout>
 
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <EditText
-                    android:id="@+id/password"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Contraseña(opcional)"
-                    android:imeActionId="@+id/login"
-                    android:imeActionLabel="@string/action_sign_in_short"
-                    android:imeOptions="actionUnspecified"
-                    android:inputType="textPassword"
-                    android:maxLines="1"
-                    android:singleLine="true" />
-
-            </android.support.design.widget.TextInputLayout>
 
             <Button
-                android:id="@+id/next"
+                android:id="@+id/save"
                 style="?android:textAppearanceSmall"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="Continuar"
+                android:text="Guardar"
                 android:background="#f25a21"
                 android:textStyle="bold" />
 
