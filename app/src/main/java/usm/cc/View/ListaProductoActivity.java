@@ -1,16 +1,11 @@
-package usm.cc;
+package usm.cc.View;
 
-import android.app.AlertDialog;
-import android.app.ListActivity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ExpandableListView;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -18,11 +13,10 @@ import com.wdullaer.swipeactionadapter.SwipeActionAdapter;
 import com.wdullaer.swipeactionadapter.SwipeDirection;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 import usm.cc.Adapters.CondomListAdapter;
 import usm.cc.Model.Condom;
+import usm.cc.R;
 
 public class ListaProductoActivity extends AppCompatActivity implements SwipeActionAdapter.SwipeActionListener{
     ArrayList<Condom> listaProductos = new ArrayList<Condom>();
@@ -31,7 +25,7 @@ public class ListaProductoActivity extends AppCompatActivity implements SwipeAct
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_lista_producto);
+        setContentView(R.layout.activity_product_list);
 
         getCondoms();
 
@@ -44,20 +38,34 @@ public class ListaProductoActivity extends AppCompatActivity implements SwipeAct
                 .setListView(listViewCondoms);
         listViewCondoms.setAdapter(mAdapter);
 
-        mAdapter.addBackground(SwipeDirection.DIRECTION_FAR_LEFT,R.layout.row_condom_list_left)
-                .addBackground(SwipeDirection.DIRECTION_NORMAL_LEFT, R.layout.row_condom_list_left);
+        mAdapter.addBackground(SwipeDirection.DIRECTION_FAR_LEFT,R.layout.row_condom_buy_options)
+                .addBackground(SwipeDirection.DIRECTION_NORMAL_LEFT, R.layout.row_condom_buy_options);
 
 
-        Button btn = (Button) findViewById(R.id.Carrito);
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //attemptLogin();
-                Intent i = new Intent(ListaProductoActivity.this, CarritoActivity.class);
-                startActivity(i);
+        ImageView home = (ImageView) findViewById(R.id.home);
+        if (home != null) {
+            home.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    //attemptLogin();
+                    Intent i = new Intent(ListaProductoActivity.this, CarritoActivity.class);
+                    startActivity(i);
 
-            }
-        });
+                }
+            });
+        }
+        ImageView settings = (ImageView) findViewById(R.id.settings);
+        if (settings != null) {
+            settings.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    //attemptLogin();
+                    Intent i = new Intent(ListaProductoActivity.this, SettingsActivity.class);
+                    startActivity(i);
+
+                }
+            });
+        }
         /*ListView listViewCondoms = (ListView) findViewById(R.id.listViewCondoms);
         listViewCondoms.setAdapter(mAdapter);
         listViewCondoms.setOnItemClickListener(new AdapterView.OnItemClickListener() {

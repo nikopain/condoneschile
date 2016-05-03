@@ -8,16 +8,15 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="usm.cc.LoginActivity"
-    android:background="#18186d">
+    tools:context=".View.LoginActivity"
+    android:background="@color/colorPrimaryDark">
 
     <!-- Login progress -->
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/imageView"
-        android:src="@drawable/logo"/>
-
+        android:src="@drawable/logox2"/>
     <ProgressBar
         android:id="@+id/login_progress"
         style="?android:attr/progressBarStyleLarge"
@@ -25,50 +24,63 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:visibility="gone" />
-
     <ScrollView
         android:id="@+id/login_form"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:paddingTop="25dp">
 
-        <LinearLayout
+        <RelativeLayout
             android:id="@+id/email_login_form"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:background="#f2f2f2">
-
-            <android.support.design.widget.TextInputLayout
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <AutoCompleteTextView
-                    android:id="@+id/name"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:id="@+id/TextInput">
+                <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Nombre"
-                    android:inputType="textAutoComplete"
-                    android:maxLines="1"
-                    android:singleLine="true"/>
+                    android:id="@+id/nameTextInput"
+                    android:layout_weight="1">
+                    <AutoCompleteTextView
+                        android:id="@+id/name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Nombre"
+                        android:inputType="textAutoComplete"
+                        android:maxLines="1"
+                        android:singleLine="true"/>
 
-            </android.support.design.widget.TextInputLayout>
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <AutoCompleteTextView
-                    android:id="@+id/lastname"
+                </android.support.design.widget.TextInputLayout>
+                <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Apellido"
-                    android:inputType="textAutoComplete"
-                    android:maxLines="1"
-                    android:singleLine="true"/>
+                    android:id="@+id/lastnameTextInput"
+                    android:layout_toRightOf="@+id/nameTextInput"
+                    android:layout_weight="1">
 
-            </android.support.design.widget.TextInputLayout>
+                    <AutoCompleteTextView
+                        android:id="@+id/lastname"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Apellido"
+                        android:inputType="textAutoComplete"
+                        android:maxLines="1"
+                        android:singleLine="true"/>
+
+                </android.support.design.widget.TextInputLayout>
+            </LinearLayout>
+
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:id="@+id/emailTextInput"
+                android:layout_below="@+id/TextInput">
 
                 <AutoCompleteTextView
                     android:id="@+id/email"
@@ -83,32 +95,32 @@
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/emailTextInput"
+                android:id="@+id/passTextInput">
 
                 <EditText
-                    android:id="@+id/password"
+                    android:id="@+id/phone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Contraseña(opcional)"
+                    android:hint="Teléfono"
                     android:imeActionId="@+id/login"
-                    android:imeActionLabel="@string/action_sign_in_short"
-                    android:imeOptions="actionUnspecified"
-                    android:inputType="textPassword"
                     android:maxLines="1"
                     android:singleLine="true" />
 
             </android.support.design.widget.TextInputLayout>
 
-            <Button
-                android:id="@+id/next"
-                style="?android:textAppearanceSmall"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="Continuar"
-                android:background="#f25a21"
-                android:textStyle="bold" />
-
-        </LinearLayout>
+        </RelativeLayout>
     </ScrollView>
+
+    <Button
+        android:id="@+id/next"
+        style="?android:textAppearanceSmall"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Continuar"
+        android:layout_below="@+id/passTextInput"
+        android:background="@color/darkpurple"
+        android:textStyle="bold" />
 </LinearLayout>

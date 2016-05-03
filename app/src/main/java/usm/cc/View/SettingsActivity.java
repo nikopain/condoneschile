@@ -1,13 +1,15 @@
-package usm.cc;
+package usm.cc.View;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class ConfiguracionActivity extends AppCompatActivity {
+import usm.cc.R;
+
+public class SettingsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_configuracion);
+        setContentView(R.layout.activity_settings);
     }
 }

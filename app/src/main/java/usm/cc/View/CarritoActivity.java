@@ -1,4 +1,4 @@
-package usm.cc;
+package usm.cc.View;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,6 +10,7 @@ import java.util.ArrayList;
 
 import usm.cc.Adapters.CondomListAdapter;
 import usm.cc.Model.Condom;
+import usm.cc.R;
 
 public class CarritoActivity extends AppCompatActivity {
 

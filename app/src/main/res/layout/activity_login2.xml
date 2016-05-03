@@ -8,7 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="usm.cc.LoginActivity"
+    tools:context=".View.LoginActivity"
     android:background="#18186d">
 
     <!-- Login progress -->
@@ -16,7 +16,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/imageView"
-        android:src="@drawable/logo"/>
+        android:src="@drawable/logox2"/>
 
     <ProgressBar
         android:id="@+id/login_progress"
@@ -29,10 +29,10 @@
     <ScrollView
         android:id="@+id/login_form"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:paddingTop="25dp">
 
-        <LinearLayout
-            android:id="@+id/email_login_form"
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -40,9 +40,10 @@
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:id="@+id/addressTextInput">
                 <AutoCompleteTextView
-                    android:id="@+id/name"
+                    android:id="@+id/address"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Dirección"
@@ -53,10 +54,12 @@
             </android.support.design.widget.TextInputLayout>
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:id="@+id/cityTextInput"
+                android:layout_below="@+id/addressTextInput">
 
                 <AutoCompleteTextView
-                    android:id="@+id/lastname"
+                    android:id="@+id/city"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Ciudad"
@@ -68,10 +71,12 @@
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:id="@+id/postalCodeTextInput"
+                android:layout_below="@+id/cityTextInput">
 
                 <AutoCompleteTextView
-                    android:id="@+id/email"
+                    android:id="@+id/postalCode"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Código postal"
@@ -82,16 +87,16 @@
             </android.support.design.widget.TextInputLayout>
 
 
-            <Button
-                android:id="@+id/save"
-                style="?android:textAppearanceSmall"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="Guardar"
-                android:background="#f25a21"
-                android:textStyle="bold" />
-
-        </LinearLayout>
+        </RelativeLayout>
     </ScrollView>
+
+    <Button
+        android:id="@+id/save"
+        style="?android:textAppearanceSmall"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Guardar"
+        android:background="@color/purple"
+        android:textStyle="bold" />
 </LinearLayout>
