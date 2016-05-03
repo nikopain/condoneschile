@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/main">
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/five"
+        android:text="+5"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Five"
+        android:id="@+id/fiveTexView"
+        android:layout_below="@+id/five"
+        android:layout_alignLeft="@+id/five"
+        android:layout_alignStart="@+id/five"
+        android:layout_alignRight="@+id/five"
+        android:layout_alignEnd="@+id/five" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/ten"
+        android:text="+10"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tfive"
+        android:text="+25"
+        android:layout_gravity="right"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="ten"
+        android:id="@+id/tenTexView"
+        android:layout_below="@+id/ten"
+        android:layout_alignLeft="@+id/ten"
+        android:layout_alignStart="@+id/ten"
+        android:layout_alignRight="@+id/ten"
+        android:layout_alignEnd="@+id/ten" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Twenty Five"
+        android:id="@+id/tfiveTexView"
+        android:layout_below="@+id/tfive"
+        android:layout_alignLeft="@+id/tfive"
+        android:layout_alignStart="@+id/tfive"
+        android:layout_alignRight="@+id/tfive"
+        android:layout_alignEnd="@+id/tfive" />
+</RelativeLayout>

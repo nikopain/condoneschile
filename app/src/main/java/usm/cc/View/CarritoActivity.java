@@ -1,4 +1,4 @@
-package usm.cc;
+package usm.cc.View;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,6 +10,7 @@ import java.util.ArrayList;
 
 import usm.cc.Adapters.CondomListAdapter;
 import usm.cc.Model.Condom;
+import usm.cc.R;
 
 public class CarritoActivity extends AppCompatActivity {
 
@@ -50,12 +51,12 @@ public class CarritoActivity extends AppCompatActivity {
 
     public void setListCondoms(){
 
-        ListView listViewRamos = (ListView) findViewById(R.id.listViewCondoms);
+        ListView listViewCondoms = (ListView) findViewById(R.id.listViewCondoms);
         Condom[] condomsArray = listaProductos.toArray(new Condom[0]);
 
-        listViewRamos.setAdapter(new CondomListAdapter(this, condomsArray));
+        listViewCondoms.setAdapter(new CondomListAdapter(this, condomsArray));
 
-        listViewRamos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        listViewCondoms.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
             }
