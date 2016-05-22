@@ -52,7 +52,7 @@ public class ExpandableCondomAdapter extends BaseExpandableListAdapter implement
             convertview = inflater.inflate(R.layout.row_condom_carrito, null);
         }
         name = (TextView)convertview.findViewById(R.id.name);
-        name.setText(childitem.getName());
+        name.setText(childitem.getNombre());
         return convertview;
     }
 

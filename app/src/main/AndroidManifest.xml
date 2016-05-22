@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
 
     <application
         android:allowBackup="true"
@@ -23,7 +24,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".View.CarritoActivity" />
-        <activity android:name=".View.ListaProductoActivity" />
         <activity android:name=".View.Login2Activity" />
         <activity android:name=".View.ProductListActivity" />
         <activity android:name=".View.SettingsActivity"></activity>

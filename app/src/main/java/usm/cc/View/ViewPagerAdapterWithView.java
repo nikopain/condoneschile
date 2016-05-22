@@ -32,11 +32,19 @@ public class ViewPagerAdapterWithView extends PagerAdapter {
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
         LinearLayout layout = null;
-        layout = (LinearLayout) inflater.inflate(R.layout.item_viewpager_example, null);
-        TextView text = (TextView) layout.findViewById(R.id.idtext);
-        text.setText(pagerItems.get(position).getText());
-        LinearLayout main = (LinearLayout) layout.findViewById(R.id.main);
-        main.setBackgroundColor(context.getResources().getColor(pagerItems.get(position).getColor()));
+        if (position == 0){
+            layout = (LinearLayout) inflater.inflate(R.layout.row_condom_carrito,null);
+            TextView nameTextView = (TextView) layout.findViewById(R.id.textViewRowName);
+            TextView descriptionTextView = (TextView) layout.findViewById(R.id.textViewRowDescriptionn);
+            TextView stockTextView = (TextView) layout.findViewById(R.id.textViewRowStock);
+
+            nameTextView.setText(pagerItems.get(position).getCondoms().getNombre());
+            descriptionTextView.setText(pagerItems.get(position).getCondoms().getDescripcion());
+            stockTextView.setText(pagerItems.get(position).getCondoms().getDisponible());
+        }
+        else if( position == 1){
+            layout = (LinearLayout) inflater.inflate(R.layout.row_condom_buy_options, null);
+        }
         container.addView(layout);
         return layout;
     }

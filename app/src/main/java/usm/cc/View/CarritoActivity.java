@@ -21,11 +21,11 @@ public class CarritoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_carrito);
-        getCondoms();
-        setListCondoms();
+       // getCondoms();
+        //setListCondoms();
 
     }
-
+/*
     private void getCondoms() {
 
         Condom condom = new Condom();
@@ -61,5 +61,5 @@ public class CarritoActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
             }
         });
-    }
+    }*/
 }
