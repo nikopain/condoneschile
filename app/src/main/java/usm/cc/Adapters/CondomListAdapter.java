@@ -39,9 +39,9 @@ public class CondomListAdapter extends ArrayAdapter<Condom> {
         TextView descriptionTextView = (TextView) rowView.findViewById(R.id.textViewRowDescriptionn);
         TextView stockTextView = (TextView) rowView.findViewById(R.id.textViewRowStock);
 
-        nameTextView.setText(condoms[position].getName());
-        descriptionTextView.setText(condoms[position].getDescription());
-        stockTextView.setText(condoms[position].getStock());
+        nameTextView.setText(condoms[position].getNombre());
+        descriptionTextView.setText(condoms[position].getDescripcion());
+        stockTextView.setText(condoms[position].getDisponible());
 
 
         return rowView;

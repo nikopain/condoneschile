@@ -5,6 +5,7 @@ import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -20,6 +21,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -33,6 +35,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+import usm.cc.Model.User;
 import usm.cc.R;
 
 import static android.Manifest.permission.READ_CONTACTS;
@@ -58,7 +61,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
      * Keep track of the login task to ensure we can cancel it if requested.
      */
     private UserLoginTask mAuthTask = null;
-
+    private Boolean isLoggedIn = false;
     // UI references.
     private AutoCompleteTextView mEmailView;
     private AutoCompleteTextView mLastnameView;
@@ -66,35 +69,35 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private EditText mPhoneView;
     private View mProgressView;
     private View mLoginFormView;
+    private User usuario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         // Set up the login form.
-        mNameView = (AutoCompleteTextView) findViewById(R.id.name);
+        if( isLoggedIn ){
+            Intent i = new Intent(LoginActivity.this , ProductListActivity.class);
+            startActivity(i);
+        }
+
+        mNameView     = (AutoCompleteTextView) findViewById(R.id.name);
         mLastnameView = (AutoCompleteTextView) findViewById(R.id.lastname);
-        mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
+        mEmailView    = (AutoCompleteTextView) findViewById(R.id.email);
+        mPhoneView    = (AutoCompleteTextView) findViewById(R.id.phone);
         populateAutoComplete();
 
-        mPhoneView = (EditText) findViewById(R.id.phone);
-        mPhoneView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
-                if (id == R.id.login || id == EditorInfo.IME_NULL) {
-                    attemptLogin();
-                    return true;
-                }
-                return false;
-            }
-        });
+        usuario = new User(mNameView.getText().toString(), mPhoneView.getText().toString()
+                ,mLastnameView.getText().toString() , mEmailView.getText().toString());
 
-        Button mEmailSignInButton = (Button) findViewById(R.id.next);
-        mEmailSignInButton.setOnClickListener(new OnClickListener() {
+        Button next = (Button) findViewById(R.id.next);
+        next.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
                 //attemptLogin();
+                Log.d("usuario", usuario.getName());
                 Intent i = new Intent(LoginActivity.this, Login2Activity.class);
+                i.putExtra("User",mNameView.getText().toString());
                 startActivity(i);
 
             }
@@ -102,7 +105,10 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
+
     }
+
+
 
     private void populateAutoComplete() {
         if (!mayRequestContacts()) {
