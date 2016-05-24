@@ -1,54 +1,55 @@
 package usm.cc.View;
 
-import android.accounts.NetworkErrorException;
+import android.content.Intent;
+import android.support.annotation.NonNull;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 
-import org.json.JSONException;
-
-import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import java.util.ListIterator;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
-import usm.cc.Adapters.CondomListAdapter;
 import usm.cc.Adapters.ListViewAdapter;
 import usm.cc.Model.Condom;
 import usm.cc.Model.CondomDTO;
 import usm.cc.Model.User;
 import usm.cc.R;
-import usm.cc.network.AARManager;
 import usm.cc.network.apiConnection;
 import usm.cc.network.BackendAPI;
 
-public class ProductListActivity extends AppCompatActivity implements Callback<CondomDTO> {
+public class ProductListActivity extends AppCompatActivity {
 
     private String TAG = "ProductListActivity";
     ArrayList<Condom> listaProductos = new ArrayList<Condom>();
     private User usuario;
-    private CondomListAdapter condomListAdapter;
+    private ListViewAdapter lvA;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.list_view);
+        setContentView(R.layout.activity_product_list);
 
         usuario = new User();
         usuario = getIntent().getExtras().getParcelable("User");
         Log.d("usuario", usuario.name +" "+usuario.city );
 
-        Log.d(TAG,"Entrando a retrofit");
-        getCondoms();
 
-        CondomDTO condomsArray = new CondomDTO();
-        condomsArray.setProductos(listaProductos);
-
+      //  CondomDTO condomsArray = new CondomDTO();
+        //condomsArray.setProductos(listaProductos);
+/*
         ArrayList<ListViewItem> array = new ArrayList<ListViewItem>();
 
-        Log.d("Condoms API", String.valueOf(condomsArray.getProductos().size()));
 
          for (int i = 0; i < condomsArray.getProductos().size(); i++) {
             ArrayList<ViewPagerItem> viewPagerItems = new ArrayList<ViewPagerItem>();
@@ -60,49 +61,60 @@ public class ProductListActivity extends AppCompatActivity implements Callback<C
             array.add(new ListViewItem(Integer.toString(i), viewPagerItems));
         }
         ListView listView = (ListView) findViewById(R.id.listView);
-        listView.setAdapter(new ListViewAdapter(this, array));
+
+        listView.setAdapter(lvA);*/
+        ListView listView = (ListView) findViewById(R.id.listViewCondoms);
+        lvA = new ListViewAdapter(this,listaProductos);
+        listView.setAdapter(lvA);
+        getCondoms();
+
+        ImageView cart = (ImageView) findViewById(R.id.cart);
+        cart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(ProductListActivity.this, CarritoActivity.class);
+                startActivity(i);
+            }
+        });
+        ImageView home = (ImageView) findViewById(R.id.home);
+        home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(ProductListActivity.this, LoginActivity.class);
+                startActivity(i);
+            }
+        });
+        ImageView settings = (ImageView) findViewById(R.id.settings);
+        settings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(ProductListActivity.this, SettingsActivity.class);
+                startActivity(i);
+            }
+        });
     }
 
     private void getCondoms() {
-        //Se hacen los llamados al webservice
-/*
-        AARManager am = new AARManager("http://45.55.159.85/api/get/productos");
-
-        String cadena = "";
-        try {
-                cadena = am.getJsonData();
-        } catch (JSONException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (NetworkErrorException e) {
-            e.printStackTrace();
-        }
-        Log.d(TAG, cadena);*/
 
         Retrofit retrofit = apiConnection.getClient();
         BackendAPI backEndAPI = retrofit.create(BackendAPI.class);
         Call<CondomDTO> call = backEndAPI.getProductos();
         Log.d(TAG, "call realizado");
-        call.enqueue(this);
+        call.enqueue(new Callback<CondomDTO>() {
+            @Override
+            public void onResponse(Call<CondomDTO> call, Response<CondomDTO> response) {
+                listaProductos.addAll(response.body().getProductos());
+                lvA.notifyDataSetChanged();
+
+            }
+
+            @Override
+            public void onFailure(Call<CondomDTO> call, Throwable t) {
+                Log.e(TAG, t.toString());
+            }
+        });
     }
 
-    @Override
-    public void onResponse(Call<CondomDTO> call, Response<CondomDTO> response) {
-
-        Log.d(TAG, "response ---"+ response);
-        if(response.isSuccessful()){
-            listaProductos.addAll(response.body().getProductos());
-            condomListAdapter.notifyDataSetChanged();
-            Log.d(TAG, "response exitoso");
-        }
-
-    }
-
-    @Override
-    public void onFailure(Call<CondomDTO> call, Throwable t) {
-
-    }
 
 /*
         Condom condom = new Condom();

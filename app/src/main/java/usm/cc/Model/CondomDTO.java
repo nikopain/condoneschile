@@ -1,19 +1,19 @@
 package usm.cc.Model;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by niko on 17/05/2016.
  */
 public class CondomDTO {
 
-    ArrayList<Condom> condoms;
+    private List<Condom> data;
+    private List<String> dbInfo;
 
-    public ArrayList<Condom> getProductos() {
-        return condoms;
-    }
+    public List<Condom> getProductos() { return data; }
+    public void setProductos(List<Condom> data) { this.data = data; }
 
-    public void setProductos(ArrayList<Condom> condoms) {
-        this.condoms = condoms;
-    }
+    public List<String> getDbInfo() { return dbInfo; }
+    public void setDbInfo(List<String> dbInfo) { this.dbInfo = dbInfo; }
 }

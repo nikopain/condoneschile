@@ -2,16 +2,18 @@ package usm.cc.View;
 
 import java.util.ArrayList;
 
+import usm.cc.Model.Condom;
+
 /**
  * Created by niko on 28/04/2016.
  */
 public class ListViewItem {
     private String idRow;
-    private ArrayList<ViewPagerItem> viewPagerItems;
+    private Condom condon;
 
-    public ListViewItem(String idRow, ArrayList<ViewPagerItem> viewPagerItems) {
+    public ListViewItem(String idRow, Condom condon) {
         this.idRow = idRow;
-        this.viewPagerItems = viewPagerItems;
+        this.condon = condon;
     }
 
     public String getIdRow() {
@@ -22,11 +24,11 @@ public class ListViewItem {
         this.idRow = idRow;
     }
 
-    public ArrayList<ViewPagerItem> getViewPagerItems() {
-        return viewPagerItems;
+    public Condom getCondon() {
+        return condon;
     }
 
-    public void setViewPagerItems(ArrayList<ViewPagerItem> viewPagerItems) {
-        this.viewPagerItems = viewPagerItems;
+    public void setViewPagerItems(Condom condon) {
+        this.condon = condon;
     }
 }

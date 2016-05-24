@@ -9,7 +9,7 @@ import usm.cc.Model.CondomDTO;
  */
 public interface BackendAPI {
 
-    @GET("productos")
+    @GET("get/productos")
     Call<CondomDTO> getProductos();
 
 

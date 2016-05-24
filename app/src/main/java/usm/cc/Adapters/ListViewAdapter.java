@@ -9,18 +9,20 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 
 import java.util.ArrayList;
+import java.util.List;
 
+import usm.cc.Model.Condom;
 import usm.cc.R;
 import usm.cc.View.ListViewItem;
 import usm.cc.View.ViewPagerAdapterWithView;
 
-public class ListViewAdapter extends ArrayAdapter<ListViewItem> {
-    private ArrayList<ListViewItem> mItems;
+public class ListViewAdapter extends ArrayAdapter<Condom> {
+    private ArrayList<Condom> mItems;
     private Context mContext;
     private LayoutInflater inflater;
 
 
-    public ListViewAdapter(FragmentActivity fragmentActivity, ArrayList<ListViewItem> items) {
+    public ListViewAdapter(FragmentActivity fragmentActivity, ArrayList<Condom> items) {
         super(fragmentActivity, 0, items);
         mContext = fragmentActivity;
         mItems = items;
@@ -33,7 +35,7 @@ public class ListViewAdapter extends ArrayAdapter<ListViewItem> {
     }
 
     @Override
-    public ListViewItem getItem(int position) {
+    public Condom getItem(int position) {
         return mItems.get(position);
     }
 
@@ -55,7 +57,7 @@ public class ListViewAdapter extends ArrayAdapter<ListViewItem> {
         }
 
         ViewPager viewPager = viewHolder.viewPager;
-        ViewPagerAdapterWithView tempMyFriendPagerAdapter = new ViewPagerAdapterWithView(mContext, mItems.get(position).getViewPagerItems());
+        ViewPagerAdapterWithView tempMyFriendPagerAdapter = new ViewPagerAdapterWithView(mContext, mItems.get(position));
         viewPager.setAdapter(tempMyFriendPagerAdapter);
         return convertView;
     }
