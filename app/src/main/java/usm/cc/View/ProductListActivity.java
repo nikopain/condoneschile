@@ -6,6 +6,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
+import java.util.Iterator;
 import java.util.List;
 
 import retrofit2.Call;
@@ -17,6 +18,7 @@ import usm.cc.Model.Product;
 import usm.cc.Model.ProductsResponse;
 import usm.cc.Model.User;
 import usm.cc.R;
+import usm.cc.misc.ProductListDecoration;
 import usm.cc.network.ApiClient;
 import usm.cc.network.ApiInterface;
 
@@ -34,9 +36,10 @@ public class ProductListActivity extends AppCompatActivity {
         usuario = getIntent().getExtras().getParcelable("User");
         Log.d("usuario", usuario.name + " " + usuario.city);
 
-        // buscamos el RecyclerView y establecemos el layout manager
+        // establecemos el tipo de layout del RecyclerView y agregamos los divisores de la lista
         final RecyclerView recyclerView = (RecyclerView) findViewById(R.id.product_list);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.addItemDecoration(new ProductListDecoration(this, LinearLayoutManager.VERTICAL));
 
         // para mejorar el rendimiento
         recyclerView.setHasFixedSize(true);
@@ -48,8 +51,18 @@ public class ProductListActivity extends AppCompatActivity {
 
             @Override
             public void onResponse(Call<ProductsResponse> call, Response<ProductsResponse> response) {
-                // mostramos los productos en el RecyclerView
+                // obtenemos el listado de productos
                 List<Product> products = response.body().getData();
+
+                // quitamos del listado aquellos que no tienen unidades disponibles
+                for (Iterator<Product> iter = products.listIterator(); iter.hasNext(); ) {
+                    Product product = iter.next();
+                    if (product.getDisponible() == 0) {
+                        iter.remove();
+                    }
+                }
+
+                // mostramos los productos en el RecyclerView
                 recyclerView.setAdapter(new ProductsAdapter(products, R.layout.list_item_product, getApplicationContext()));
             }
 

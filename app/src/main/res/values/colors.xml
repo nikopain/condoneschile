@@ -16,10 +16,10 @@
     <item name="white" type="color">#FFFFFF</item>
 
     <!-- Colores de cada elemento del listado de productos -->
-    <color name="orange">#FF3909</color>
-    <color name="colorAccentDark">#00B482</color>
-    <color name="colorBlack">#555555</color>
-    <color name="colorWhite">#FFFFFF</color>
-    <color name="colorGrey">#707070</color>
-    <color name="colorGreyLight">#8A8A8A</color>
+    <color name="colorBackgroundPrimary">#FFFFFF</color>
+    <color name="colorBackgroundSecondary">#ECECEC</color>
+    <color name="colorBackgroundTertiary">#E1F5FE</color>
+    <color name="colorTextPrimary">#0020A2</color>
+    <color name="colorTextSecondary">#757575</color>
+    <color name="colorTextTertiary">#03A9F4</color>
 </resources>
