@@ -12,7 +12,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/listViewCondoms"
-        android:layout_alignParentTop="true"/>
+        android:layout_alignParentTop="true"
+        android:layout_above="@+id/menuitems" />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -24,21 +25,21 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/home"
-            android:src="@drawable/home32"
+            android:src="@drawable/homeunpress"
             android:layout_weight="1"
             android:layout_alignParentBottom="true"/>
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/cart"
-            android:src="@drawable/cart32"
+            android:src="@drawable/cartunpress"
             android:layout_weight="1"
             android:layout_alignParentBottom="true"/>
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/settings"
-            android:src="@drawable/settings32"
+            android:src="@drawable/settingsunpress"
             android:layout_weight="1"
             android:layout_alignParentBottom="true"/>
     </LinearLayout>

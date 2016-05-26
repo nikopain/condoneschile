@@ -33,15 +33,13 @@ public class CondomListAdapter extends ArrayAdapter<Condom> {
         LayoutInflater inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-        View rowView = inflater.inflate(R.layout.row_condom_carrito, parent, false);
+        View rowView = inflater.inflate(R.layout.row_carrito, parent, false);
 
         TextView nameTextView = (TextView) rowView.findViewById(R.id.textViewRowName);
-        TextView descriptionTextView = (TextView) rowView.findViewById(R.id.textViewRowDescriptionn);
         TextView stockTextView = (TextView) rowView.findViewById(R.id.textViewRowStock);
 
         nameTextView.setText(condoms[position].getNombre());
-        descriptionTextView.setText(condoms[position].getDescripcion());
-        stockTextView.setText(condoms[position].getDisponible());
+        stockTextView.setText(String.valueOf(condoms[position].getVendido()));
 
 
         return rowView;

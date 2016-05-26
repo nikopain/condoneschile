@@ -1,10 +1,16 @@
 package usm.cc.View;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.style.TtsSpan;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -15,36 +21,56 @@ import usm.cc.R;
 public class CarritoActivity extends AppCompatActivity {
 
     ArrayList<Condom> listaProductos = new ArrayList<Condom>();
-
+    private int total=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_carrito);
-       // getCondoms();
-        //setListCondoms();
+        getCondoms();
+        setListCondoms();
+        getTotal();
+        TextView costoTotal = (TextView) findViewById(R.id.costoTotal);
+        costoTotal.setText("Costo Total: $"+ String.valueOf(total));
 
+        ImageView home = (ImageView) findViewById(R.id.home);
+        home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(CarritoActivity.this, ProductListActivity.class);
+                startActivity(i);
+            }
+        });
+        ImageView settings = (ImageView) findViewById(R.id.settings);
+        settings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(CarritoActivity.this, SettingsActivity.class);
+                startActivity(i);
+            }
+        });
     }
-/*
+    private void getTotal(){
+        int preciounitario= 300;
+        for( int i = 0 ; i< listaProductos.size(); i++){
+            total += listaProductos.get(i).getVendido()*preciounitario;
+        }
+    }
     private void getCondoms() {
 
         Condom condom = new Condom();
 
-        condom.setName("LifeStyle Ultra Delgado");
+        condom.setNombre("LifeStyle Ultra Delgado");
 
-        condom.setStock("100+");
-
-        condom.setDescription("más delgado que un preservativo de látex standard, otorgando una sensación más natural, más sensibilidad.");
+        condom.setVendido(100);
 
         listaProductos.add(condom);
 
         condom = new Condom();
 
-        condom.setName("LifeStyle Ultra Lubricado");
+        condom.setNombre("LifeStyle Ultra Lubricado");
 
-        condom.setStock("250+");
-
-        condom.setDescription("El preservativo mas popular de Lifestyles, contiene extra lubricación para una mejor sensación.");
+        condom.setVendido(250);
 
         listaProductos.add(condom);
     }
@@ -61,5 +87,5 @@ public class CarritoActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
             }
         });
-    }*/
+    }
 }
