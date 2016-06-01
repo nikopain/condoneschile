@@ -7,15 +7,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.daimajia.swipe.SwipeLayout;
-import com.daimajia.swipe.adapters.RecyclerSwipeAdapter;
-
 import java.util.List;
 
 import usm.cc.Model.Product;
 import usm.cc.R;
 
-public class ProductsAdapter extends RecyclerSwipeAdapter<ProductsAdapter.ProductViewHolder> {
+public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ProductViewHolder> {
 
     private List<Product> products; // listado de productos
     private int rowLayout; // layout para cada producto
@@ -25,17 +22,19 @@ public class ProductsAdapter extends RecyclerSwipeAdapter<ProductsAdapter.Produc
     // Los elementos más complejos pueden necesitar más de una vista, el view holder nos
     // permite proporcionarle acceso a todas las vistas a un elemento del conjunto de datos.
     public static class ProductViewHolder extends RecyclerView.ViewHolder {
-        SwipeLayout swipeLayout;
-        TextView productTitle;
+        TextView productBrand;
+        TextView productBrandCircle;
+        TextView productName;
         TextView productDescription;
-        TextView productStock;
+        View productBrandBorder;
 
         public ProductViewHolder(View v) {
             super(v);
-            swipeLayout = (SwipeLayout) v.findViewById(R.id.product_layout);
-            productTitle = (TextView) v.findViewById(R.id.product_title);
+            productBrand = (TextView) v.findViewById(R.id.product_brand);
+            productBrandBorder = (View) v.findViewById(R.id.product_brand_border);
+            productBrandCircle = (TextView) v.findViewById(R.id.product_brand_circle);
+            productName = (TextView) v.findViewById(R.id.product_name);
             productDescription = (TextView) v.findViewById(R.id.product_description);
-            productStock = (TextView) v.findViewById(R.id.product_stock);
         }
     }
 
@@ -56,60 +55,51 @@ public class ProductsAdapter extends RecyclerSwipeAdapter<ProductsAdapter.Produc
     // Reemplazamos el contenido de una vista (invocado por el layout manager).
     @Override
     public void onBindViewHolder(ProductViewHolder holder, final int position) {
-        // colocamos los datos del producto
         Product item = products.get(position);
-        holder.productTitle.setText(item.getMarca() + " " + item.getNombre());
+
+        // reemplazamos los datos
+        holder.productBrand.setText(item.getMarca().toUpperCase());
+        holder.productBrandCircle.setText(item.getMarca().substring(0, 1).toUpperCase());
+        holder.productName.setText(item.getNombre().substring(0, 1).toUpperCase() + item.getNombre().substring(1));
         holder.productDescription.setText(item.getDescripcion());
-        holder.productStock.setText(item.getDisponible().toString());
 
-        // elegimos el efecto de deslizamiento
-        holder.swipeLayout.setShowMode(SwipeLayout.ShowMode.PullOut);
+        // le asignamos un color a la tarjeta según la marca del producto
+        switch (item.getMarca().toLowerCase()) {
+            case "crown":
+                holder.productBrandBorder.setBackgroundResource(R.color.brand_crown);
+                holder.productBrandCircle.setBackgroundResource(R.drawable.circle_crown);
+                break;
 
-        // elegimos el modo de deslizamiento (se arrastra desde la derecha) y la vista que se mostrará
-        holder.swipeLayout.addDrag(SwipeLayout.DragEdge.Right, holder.swipeLayout.findViewById(R.id.product_menu));
+            case "durex":
+                holder.productBrandBorder.setBackgroundResource(R.color.brand_durex);
+                holder.productBrandCircle.setBackgroundResource(R.drawable.circle_durex);
+                break;
 
-        // manejar diferentes eventos al deslizar
-        holder.swipeLayout.addSwipeListener(new SwipeLayout.SwipeListener() {
-            @Override
-            public void onClose(SwipeLayout layout) {
-                // when the SurfaceView totally cover the BottomView
-            }
+            case "lifestyles":
+                holder.productBrandBorder.setBackgroundResource(R.color.brand_lifestyles);
+                holder.productBrandCircle.setBackgroundResource(R.drawable.circle_lifestyles);
+                break;
 
-            @Override
-            public void onUpdate(SwipeLayout layout, int leftOffset, int topOffset) {
-                // you are swiping
-            }
+            case "one":
+                holder.productBrandBorder.setBackgroundResource(R.color.brand_one);
+                holder.productBrandCircle.setBackgroundResource(R.drawable.circle_one);
+                break;
 
-            @Override
-            public void onStartOpen(SwipeLayout layout) {
+            case "trojan":
+                holder.productBrandBorder.setBackgroundResource(R.color.brand_trojan);
+                holder.productBrandCircle.setBackgroundResource(R.drawable.circle_trojan);
+                break;
 
-            }
-
-            @Override
-            public void onOpen(SwipeLayout layout) {
-                // when the BottomView totally show
-            }
-
-            @Override
-            public void onStartClose(SwipeLayout layout) {
-
-            }
-
-            @Override
-            public void onHandRelease(SwipeLayout layout, float xvel, float yvel) {
-                // when user's hand released
-            }
-        });
+            default:
+                holder.productBrandBorder.setBackgroundResource(R.color.brand_unknown);
+                holder.productBrandCircle.setBackgroundResource(R.drawable.circle_unknown);
+                break;
+        }
     }
 
     // Devolvemos el tamaño del conjunto de datos.
     @Override
     public int getItemCount() {
         return products.size();
-    }
-
-    @Override
-    public int getSwipeLayoutResourceId(int position) {
-        return R.id.product_layout;
     }
 }

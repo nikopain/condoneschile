@@ -16,10 +16,25 @@
     <item name="white" type="color">#FFFFFF</item>
 
     <!-- Colores de cada elemento del listado de productos -->
-    <color name="colorBackgroundPrimary">#FFFFFF</color>
-    <color name="colorBackgroundSecondary">#ECECEC</color>
-    <color name="colorBackgroundTertiary">#E1F5FE</color>
-    <color name="colorTextPrimary">#0020A2</color>
-    <color name="colorTextSecondary">#757575</color>
-    <color name="colorTextTertiary">#03A9F4</color>
+    <color name="background_content">#FFFFFF</color>
+    <color name="background_content_darker">#EEEEEE</color>
+    <color name="background_secondary">#2D2E3B</color>
+
+    <color name="border_content">#EDE7F6</color>
+    <color name="border_content_darker">#BDBDBD</color>
+
+    <color name="brand_crown">#1976D2</color>
+    <color name="brand_durex">#00796B</color>
+    <color name="brand_lifestyles">#7B1FA2</color>
+    <color name="brand_one">#C2185B</color>
+    <color name="brand_trojan">#E64A19</color>
+    <color name="brand_unknown">#455A64</color>
+
+    <color name="text_product_brand_circle">#FFFFFF</color>
+    <color name="text_product_add_button">#9E9E9E</color>
+    <color name="text_product_brand">#757575</color>
+    <color name="text_product_description">#757575</color>
+    <color name="text_product_name">#212121</color>
+    <color name="text_shopping_cart_item_units">#388E3C</color>
+    <color name="text_shopping_cart_title">#757575</color>
 </resources>

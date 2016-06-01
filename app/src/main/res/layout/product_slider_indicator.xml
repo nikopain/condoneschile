@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp">
+
+    <!-- Texto separador "de" -->
+    <TextView
+        android:id="@+id/product_slider_indicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:text="@string/product_slider_indicator"
+        android:textSize="24sp"/>
+
+    <!-- Posición actual del slider -->
+    <TextView
+        android:id="@+id/product_slider_current_position"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/product_slider_indicator"
+        android:layout_toLeftOf="@id/product_slider_indicator"
+        android:layout_toStartOf="@id/product_slider_indicator"
+        android:text="1"
+        android:textSize="24sp"
+        android:textStyle="bold"/>
+
+    <!-- Cantidad total de productos -->
+    <TextView
+        android:id="@+id/product_slider_last_position"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/product_slider_indicator"
+        android:layout_toEndOf="@id/product_slider_indicator"
+        android:layout_toRightOf="@id/product_slider_indicator"
+        android:text="\?"
+        android:textSize="24sp"
+        android:textStyle="bold"/>
+</RelativeLayout>
