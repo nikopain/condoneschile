@@ -47,7 +47,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/nameTextInput"
-                    android:layout_weight="1">
+                    android:layout_weight="1"
+                    android:textColorHint="#757575">
                     <AutoCompleteTextView
                         android:id="@+id/name"
                         android:layout_width="match_parent"
@@ -55,7 +56,8 @@
                         android:hint="Nombre"
                         android:inputType="textAutoComplete"
                         android:maxLines="1"
-                        android:singleLine="true"/>
+                        android:singleLine="true"
+                        android:textColor="#333333"/>
 
                 </android.support.design.widget.TextInputLayout>
                 <android.support.design.widget.TextInputLayout
@@ -63,7 +65,8 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/lastnameTextInput"
                     android:layout_toRightOf="@+id/nameTextInput"
-                    android:layout_weight="1">
+                    android:layout_weight="1"
+                    android:textColorHint="#757575">
 
                     <AutoCompleteTextView
                         android:id="@+id/lastname"
@@ -72,7 +75,8 @@
                         android:hint="Apellido"
                         android:inputType="textAutoComplete"
                         android:maxLines="1"
-                        android:singleLine="true"/>
+                        android:singleLine="true"
+                        android:textColor="#333333"/>
 
                 </android.support.design.widget.TextInputLayout>
             </LinearLayout>
@@ -82,7 +86,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/emailTextInput"
-                android:layout_below="@+id/TextInput">
+                android:layout_below="@+id/TextInput"
+                android:textColorHint="#757575">
 
                 <AutoCompleteTextView
                     android:id="@+id/email"
@@ -91,7 +96,8 @@
                     android:hint="@string/prompt_email"
                     android:inputType="textEmailAddress"
                     android:maxLines="1"
-                    android:singleLine="true" />
+                    android:singleLine="true"
+                    android:textColor="#333333"/>
 
             </android.support.design.widget.TextInputLayout>
 
@@ -99,7 +105,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/emailTextInput"
-                android:id="@+id/phoneTextInput">
+                android:id="@+id/phoneTextInput"
+                android:textColorHint="#757575">
 
                 <AutoCompleteTextView
                     android:id="@+id/phone"
@@ -108,7 +115,8 @@
                     android:hint="Teléfono"
                     android:imeActionId="@+id/login"
                     android:maxLines="1"
-                    android:singleLine="true" />
+                    android:singleLine="true"
+                    android:textColor="#333333"/>
 
             </android.support.design.widget.TextInputLayout>
 
