@@ -9,7 +9,9 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".View.LoginActivity"
-    android:background="#18186d">
+    android:background="#18186d"
+    android:focusable="true"
+    android:focusableInTouchMode="true">
 
     <!-- Login progress -->
     <ImageView
@@ -41,7 +43,8 @@
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/addressTextInput">
+                android:id="@+id/addressTextInput"
+                android:textColorHint="#757575">
                 <AutoCompleteTextView
                     android:id="@+id/address"
                     android:layout_width="match_parent"
@@ -49,14 +52,16 @@
                     android:hint="Dirección"
                     android:inputType="textAutoComplete"
                     android:maxLines="1"
-                    android:singleLine="true"/>
+                    android:singleLine="true"
+                    android:textColor="#333333"/>
 
             </android.support.design.widget.TextInputLayout>
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/cityTextInput"
-                android:layout_below="@+id/addressTextInput">
+                android:layout_below="@+id/addressTextInput"
+                android:textColorHint="#757575">
 
                 <AutoCompleteTextView
                     android:id="@+id/city"
@@ -65,7 +70,8 @@
                     android:hint="Ciudad"
                     android:inputType="textAutoComplete"
                     android:maxLines="1"
-                    android:singleLine="true"/>
+                    android:singleLine="true"
+                    android:textColor="#333333"/>
 
             </android.support.design.widget.TextInputLayout>
 
@@ -73,7 +79,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/pCodeTextInput"
-                android:layout_below="@+id/cityTextInput">
+                android:layout_below="@+id/cityTextInput"
+                android:textColorHint="#757575">
 
                 <AutoCompleteTextView
                     android:id="@+id/postalCode"
@@ -82,7 +89,8 @@
                     android:hint="Código postal"
                     android:inputType="textEmailAddress"
                     android:maxLines="1"
-                    android:singleLine="true" />
+                    android:singleLine="true"
+                    android:textColor="#333333"/>
 
             </android.support.design.widget.TextInputLayout>
 
