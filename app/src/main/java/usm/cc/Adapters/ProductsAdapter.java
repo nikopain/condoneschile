@@ -59,7 +59,6 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.Produc
 
         // reemplazamos los datos
         holder.productBrand.setText(item.getMarca().toUpperCase());
-        holder.productBrandCircle.setText(item.getMarca().substring(0, 1).toUpperCase());
         holder.productName.setText(item.getNombre().substring(0, 1).toUpperCase() + item.getNombre().substring(1));
         holder.productDescription.setText(item.getDescripcion());
 
@@ -68,31 +67,37 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.Produc
             case "crown":
                 holder.productBrandBorder.setBackgroundResource(R.color.brand_crown);
                 holder.productBrandCircle.setBackgroundResource(R.drawable.circle_crown);
+                holder.productBrandCircle.setText(R.string.brand_circle_crown);
                 break;
 
             case "durex":
                 holder.productBrandBorder.setBackgroundResource(R.color.brand_durex);
                 holder.productBrandCircle.setBackgroundResource(R.drawable.circle_durex);
+                holder.productBrandCircle.setText(R.string.brand_circle_durex);
                 break;
 
             case "lifestyles":
                 holder.productBrandBorder.setBackgroundResource(R.color.brand_lifestyles);
                 holder.productBrandCircle.setBackgroundResource(R.drawable.circle_lifestyles);
+                holder.productBrandCircle.setText(R.string.brand_circle_lifestyles);
                 break;
 
             case "one":
                 holder.productBrandBorder.setBackgroundResource(R.color.brand_one);
                 holder.productBrandCircle.setBackgroundResource(R.drawable.circle_one);
+                holder.productBrandCircle.setText(R.string.brand_circle_one);
                 break;
 
             case "trojan":
                 holder.productBrandBorder.setBackgroundResource(R.color.brand_trojan);
                 holder.productBrandCircle.setBackgroundResource(R.drawable.circle_trojan);
+                holder.productBrandCircle.setText(R.string.brand_circle_trojan);
                 break;
 
             default:
                 holder.productBrandBorder.setBackgroundResource(R.color.brand_unknown);
                 holder.productBrandCircle.setBackgroundResource(R.drawable.circle_unknown);
+                holder.productBrandCircle.setText(R.string.brand_circle_unknown);
                 break;
         }
     }
