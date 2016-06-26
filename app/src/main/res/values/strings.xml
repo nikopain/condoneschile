@@ -9,7 +9,7 @@
     <string name="brand_circle_trojan">T</string>
     <string name="brand_circle_unknown">\?</string>
     <string name="product_slider_indicator">de</string>
-    <string name="shopping_cart_title">Carro de compras</string>
+    <string name="shopping_cart_title">Shopping cart</string>
 
 
     <!-- Strings related to login -->
@@ -24,4 +24,21 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="exit">Exit</string>
+    <string name="next">Next</string>
+    <string name="prev">previous</string>
+    <string name="end">End</string>
+    <string name="title_activity_full_login">Sign in</string>
+    <string name="name">Name(*)</string>
+    <string name="lastname">Lastname(*)</string>
+    <string name="phone">Phone(*)</string>
+    <string name="register">Register</string>
+    <string name="postalCode">Postal Code</string>
+    <string name="address">Address(*)</string>
+    <string name="welcome">Welcome</string>
+    <string name="city">City(*)</string>
+    <string name="fillFields">Please fill * fields before continue</string>
 </resources>

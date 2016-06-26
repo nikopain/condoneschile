@@ -93,6 +93,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:id="@+id/product_button_5"
                 android:background="@drawable/border_right_gray_bg_gray"
                 android:gravity="center"
                 android:padding="10dp"
@@ -107,6 +108,7 @@
                 android:background="@drawable/border_right_gray_bg_gray"
                 android:gravity="center"
                 android:padding="10dp"
+                android:id="@+id/product_button_10"
                 android:text="+10"
                 android:textColor="@color/text_product_add_button"
                 android:textSize="24sp"/>
@@ -117,6 +119,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:padding="10dp"
+                android:id="@+id/product_button_50"
                 android:text="+50"
                 android:textColor="@color/text_product_add_button"
                 android:textSize="24sp"/>

@@ -1,24 +1,8 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center_horizontal"
-    android:orientation="vertical"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".View.LoginActivity"
-    android:background="#18186d"
-    android:focusable="true"
-    android:focusableInTouchMode="true">
-
-    <!-- Login progress -->
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/imageView"
-        android:src="@drawable/logox2"/>
+    tools:context="usm.cc.Fragments.AddressFragment">
 
     <ProgressBar
         android:id="@+id/login_progress"
@@ -46,7 +30,7 @@
                 android:id="@+id/addressTextInput"
                 android:textColorHint="#757575">
                 <AutoCompleteTextView
-                    android:id="@+id/address"
+                    android:id="@+id/addressText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Dirección"
@@ -64,7 +48,7 @@
                 android:textColorHint="#757575">
 
                 <AutoCompleteTextView
-                    android:id="@+id/city"
+                    android:id="@+id/cityText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Ciudad"
@@ -98,13 +82,4 @@
         </RelativeLayout>
     </ScrollView>
 
-    <Button
-        android:id="@+id/save"
-        style="?android:textAppearanceSmall"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Guardar"
-        android:background="@color/darkpurple"
-        android:textStyle="bold" />
-</LinearLayout>
+</FrameLayout>
