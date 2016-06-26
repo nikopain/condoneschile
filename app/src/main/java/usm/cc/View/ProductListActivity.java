@@ -1,10 +1,13 @@
 package usm.cc.View;
 
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import java.util.Collections;
@@ -33,34 +36,75 @@ public class ProductListActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_products);
+        setContentView(R.layout.activity_home);
+
+        configureSlider();
+        configureButtons();
 
         usuario = new User();
         usuario = getIntent().getExtras().getParcelable("User");
         Log.d("usuario", usuario.name + " " + usuario.city);
 
-        // establecemos el tipo de layout del RecyclerView
-        final SnappingRecyclerView recyclerView = (SnappingRecyclerView) findViewById(R.id.product_slider);
-        final LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
-        recyclerView.setLayoutManager(layoutManager);
 
-        // activamos la opción para centrar las tarjetas al terminar el desplazamiento
-        recyclerView.setSnapEnabled(true);
+    }
+
+    // Parar ordenar el listado de productos por marca.
+    public class ComparatorProduct implements Comparator {
+        public int compare(Object arg1, Object arg2) {
+            Product product1 = (Product) arg1;
+            Product product2 = (Product) arg2;
+
+            int flag = product1.getMarca().compareTo(product2.getMarca());
+            if (flag == 0) {
+                return product1.getNombre().compareTo(product2.getNombre());
+            } else {
+                return flag;
+            }
+        }
+    }
+
+    private void configureButtons() {
+        ImageButton boton_actualizar = (ImageButton) findViewById(R.id.button_refresh);
+        ImageButton boton_historial = (ImageButton) findViewById(R.id.button_history);
+
+        boton_actualizar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Presionaste el botón refrescar.", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+            }
+        });
+
+        boton_historial.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Presionaste el botón historial.", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+            }
+        });
+    }
+
+    private void configureSlider() {
+        // establecer el tipo de layout del RecyclerView
+        final SnappingRecyclerView productSlider = (SnappingRecyclerView) findViewById(R.id.product_slider);
+        final LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        productSlider.setLayoutManager(layoutManager);
+
+        // activar opción para centrar las tarjetas al terminar el desplazamiento
+        productSlider.setSnapEnabled(true);
 
         // para mejorar el rendimiento
-        recyclerView.setHasFixedSize(true);
+        productSlider.setHasFixedSize(true);
 
-        // realizamos una solicitud HTTP asíncrona
+        // realizar una solicitud HTTP asíncrona
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
         Call<ProductsResponse> call = apiService.getProducts();
-        call.enqueue(new Callback<ProductsResponse>() {
 
+        call.enqueue(new Callback<ProductsResponse>() {
             @Override
             public void onResponse(Call<ProductsResponse> call, Response<ProductsResponse> response) {
-                // obtenemos el listado de productos
+                // obtener los productos
                 final List<Product> products = response.body().getData();
 
-                // quitamos del listado aquellos que no tienen unidades disponibles
+                // quitar aquellos productos que no tienen unidades disponibles
                 for (Iterator<Product> iter = products.listIterator(); iter.hasNext(); ) {
                     Product product = iter.next();
                     if (product.getDisponible() == 0) {
@@ -68,16 +112,16 @@ public class ProductListActivity extends AppCompatActivity {
                     }
                 }
 
-                // ordenamos los productos por marca
+                // ordenar productos por marca
                 if (products.size() > 0) {
                     Collections.sort(products, new ComparatorProduct());
                 }
 
-                // mostramos los productos en el RecyclerView
-                recyclerView.setAdapter(new ProductsAdapter(products, R.layout.product_slider_item, getApplicationContext()));
+                // añadir productos al RecyclerView
+                productSlider.setAdapter(new ProductsAdapter(products, R.layout.home_slider_item, getApplicationContext()));
 
-                // indicamos la posición de la tarjeta centrada
-                recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+                // mostrar posición actual del slider
+                productSlider.addOnScrollListener(new RecyclerView.OnScrollListener() {
                     public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                         super.onScrolled(recyclerView, dx, dy);
 
@@ -96,25 +140,9 @@ public class ProductListActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<ProductsResponse> call, Throwable t) {
-                // la solicitud falló, así que registramos el error
+                // registrar error cuando la solicitud falla
                 Log.e(TAG, t.toString());
             }
         });
-    }
-
-    // Parar ordenar el listado de productos por marca.
-    public class ComparatorProduct implements Comparator {
-
-        public int compare(Object arg1, Object arg2) {
-            Product product1 = (Product) arg1;
-            Product product2 = (Product) arg2;
-
-            int flag = product1.getMarca().compareTo(product2.getMarca());
-            if (flag == 0) {
-                return product1.getNombre().compareTo(product2.getNombre());
-            } else {
-                return flag;
-            }
-        }
     }
 }

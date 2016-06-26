@@ -23,9 +23,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".View.ProductListActivity"
+            android:label="Productos"
+            android:screenOrientation="portrait" />
         <activity android:name=".View.CarritoActivity" />
         <activity android:name=".View.Login2Activity" />
-        <activity android:name=".View.ProductListActivity" />
         <activity android:name=".View.SettingsActivity"></activity>
     </application>
 
