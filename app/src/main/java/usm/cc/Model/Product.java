@@ -22,6 +22,15 @@ public class Product {
     private String imagen;
     private String descripcion;
     private Integer mostrar;
+    private int actual;
+
+    public int getActual() {
+        return actual;
+    }
+
+    public void setActual(int actual) {
+        this.actual = actual;
+    }
 
     public String get0() { return _0; }
     public void set0(String _0) { this._0 = _0; }

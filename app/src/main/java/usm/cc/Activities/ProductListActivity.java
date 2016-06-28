@@ -14,6 +14,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -34,6 +35,7 @@ import retrofit2.Response;
 
 
 import usm.cc.Adapters.ProductsAdapter;
+import usm.cc.Adapters.ProductsCartAdapter;
 import usm.cc.Model.Condom;
 import usm.cc.Model.Product;
 import usm.cc.Model.ProductsResponse;
@@ -44,7 +46,8 @@ import usm.cc.network.ApiClient;
 import usm.cc.network.ApiInterface;
 
 public class ProductListActivity extends AppCompatActivity {
-
+    ArrayList<Product> productArrayList = new ArrayList<Product>();
+    ProductsCartAdapter productsCartAdapter;
     private String TAG = ProductListActivity.class.getSimpleName();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +58,9 @@ public class ProductListActivity extends AppCompatActivity {
         // establecemos el tipo de layout del RecyclerView
 
 
-        final SnappingRecyclerView recyclerViewCart = (SnappingRecyclerView) findViewById(R.id.products_cart);
+        final ListView productsCartListView = (ListView) findViewById(R.id.products_cart);
+        productsCartAdapter = new ProductsCartAdapter(this,productArrayList);
+        productsCartListView.setAdapter(productsCartAdapter);
         final SnappingRecyclerView recyclerView = (SnappingRecyclerView) findViewById(R.id.product_slider);
         final LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(layoutManager);
@@ -81,6 +86,7 @@ public class ProductListActivity extends AppCompatActivity {
                         iter.remove();
                     }
                 }
+                final TextView currentPositionTextView = (TextView) findViewById(R.id.product_slider_current_position);
                 TextView lastPositionTextView = (TextView) findViewById(R.id.product_slider_last_position);
                 lastPositionTextView.setText(String.valueOf(products.size()));
                 // ordenamos los productos por marca
@@ -89,22 +95,60 @@ public class ProductListActivity extends AppCompatActivity {
                 }
                 // mostramos los productos en el RecyclerView
                 recyclerView.setAdapter(new ProductsAdapter(products, R.layout.product_slider_item, getApplicationContext()));
-                // indicamos la posición de la tarjeta centrada
+                // indicamos la posición de la tarjeta centrada, 1+ que la lista products
                 recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
                     public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                         super.onScrolled(recyclerView, dx, dy);
-                        final Integer currentPosition = layoutManager.findFirstCompletelyVisibleItemPosition()+1;
-                        TextView currentPositionTextView = (TextView) findViewById(R.id.product_slider_current_position);
+                        TextView p5 = (TextView) findViewById(R.id.product_button_5);
+                        TextView p10 = (TextView) findViewById(R.id.product_button_10);
+                        TextView p50 = (TextView) findViewById(R.id.product_button_50);
+                        final Integer currentPosition = layoutManager.findFirstCompletelyVisibleItemPosition() + 1;
                         if (currentPosition > 0) {
+                            final Product currentProduct = products.get(currentPosition-1);
                             currentPositionTextView.setText(currentPosition.toString());
-                            TextView t5 = (TextView) findViewById(R.id.product_button_5);
-                            t5.setOnClickListener(new View.OnClickListener() {
+                            Log.d(products.get(currentPosition - 1).getNombre(), String.valueOf(products.get(currentPosition - 1).getDisponible()));
+                            p5.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View v) {
-                                      Toast.makeText(getApplicationContext(), "Has agregado 5 " + products.get(currentPosition-1).getNombre()+" al carrito.", Toast.LENGTH_SHORT).show();
+                                    if(currentProduct.getActual()==0) {
+                                        currentProduct.setActual(5);
+                                        productArrayList.add(currentProduct);
+                                        productsCartAdapter.notifyDataSetChanged();
+                                    }
+                                    else{
+                                        currentProduct.setActual(currentProduct.getActual()+5);
+                                        productsCartAdapter.notifyDataSetChanged();
+                                    }
                                 }
                             });
-                            //lastPositionTextView.setText(listSize.toString());
+                            p10.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    if(currentProduct.getActual()==0) {
+                                        currentProduct.setActual(10);
+                                        productArrayList.add(currentProduct);
+                                        productsCartAdapter.notifyDataSetChanged();
+                                    }
+                                    else{
+                                        currentProduct.setActual(currentProduct.getActual()+10);
+                                        productsCartAdapter.notifyDataSetChanged();
+                                    }
+                                }
+                            });
+                            p50.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    if(currentProduct.getActual()==0) {
+                                        currentProduct.setActual(50);
+                                        productArrayList.add(currentProduct);
+                                        productsCartAdapter.notifyDataSetChanged();
+                                    }
+                                    else{
+                                        currentProduct.setActual(currentProduct.getActual()+50);
+                                        productsCartAdapter.notifyDataSetChanged();
+                                    }
+                                }
+                            });
                         }
                     }
                 });

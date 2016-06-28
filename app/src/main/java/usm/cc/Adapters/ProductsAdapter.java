@@ -47,7 +47,6 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.Produc
             product5 = (TextView) v.findViewById(R.id.product_button_5);
             product10 = (TextView) v.findViewById(R.id.product_button_10);
             product50 = (TextView) v.findViewById(R.id.product_button_50);
-            product_add_buttons = (LinearLayout) v.findViewById(R.id.product_add_buttons);
         }
     }
 
@@ -73,7 +72,7 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.Produc
         holder.productBrand.setText(item.getMarca().toUpperCase());
         holder.productBrandCircle.setText(item.getMarca().substring(0, 1).toUpperCase());
         holder.productName.setText(item.getNombre().substring(0, 1).toUpperCase() + item.getNombre().substring(1));
-        holder.productDescription.setText(item.getDescripcion() +" "+String.valueOf(position)+" "+ item.getDisponible());
+        holder.productDescription.setText(item.getDescripcion());
         if(item.getDisponible()<50){
             holder.product50.setEnabled(false);
             holder.product50.setText("NoStock");

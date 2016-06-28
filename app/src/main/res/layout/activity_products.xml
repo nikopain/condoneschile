@@ -59,7 +59,7 @@
                     android:textColor="@color/text_shopping_cart_title"
                     android:textSize="20sp"/>
 
-                <usm.cc.misc.SnappingRecyclerView
+                <ListView
                     android:id="@+id/products_cart"
                     android:layout_below="@id/product_slider_indicator"
                     android:layout_width="match_parent"
