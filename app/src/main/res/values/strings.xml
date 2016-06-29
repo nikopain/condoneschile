@@ -8,8 +8,23 @@
     <string name="brand_circle_one">O</string>
     <string name="brand_circle_trojan">T</string>
     <string name="brand_circle_unknown">\?</string>
+    <string name="product_button_add_to_cart">Añadir al carro</string>
+    <string name="product_button_edit">Modificar pedido</string>
     <string name="product_slider_indicator">de</string>
+    <string name="product_stock_label">#</string>
+    <string name="shopping_cart_button_send">Realizar pedido</string>
+    <string name="shopping_cart_dialog_button_accept">OK</string>
+    <string name="shopping_cart_dialog_button_add">Añadir</string>
+    <string name="shopping_cart_dialog_button_cancel">Cancelar</string>
+    <string name="shopping_cart_dialog_button_edit">Modificar</string>
+    <string name="shopping_cart_dialog_message_order_sent">Hemos recibido tu pedido.</string>
+    <string name="shopping_cart_dialog_title_add_to_cart">Seleccionar unidades</string>
+    <string name="shopping_cart_dialog_title_order_sent">Gracias!</string>
+    <string name="shopping_cart_empty">No tienes productos en tu carro de compras.</string>
     <string name="shopping_cart_title">Carro de compras</string>
+    <string name="shopping_cart_total">$%1$s</string>
+    <string name="shopping_cart_total_label">Total</string>
+    <string name="shopping_cart_units_label">unids.</string>
 
 
     <!-- Strings related to login -->
