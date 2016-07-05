@@ -5,7 +5,6 @@ import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -30,10 +29,10 @@ public class SettingsActivity extends AppCompatActivity {
     private void getInfo() {
         SharedPreferences sp = getSharedPreferences(LoginActivity.MyPREFERENCES, Context.MODE_PRIVATE);
         Toast.makeText(getApplicationContext(),"Mostrando tu informacion "+sp.getString(LoginActivity.NAME,""),Toast.LENGTH_SHORT).show();
-         infoSettings.add(new Info(getResources().getString(R.string.name), sp.getString(LoginActivity.NAME,"")));
+         infoSettings.add(new Info(getResources().getString(R.string.register_field_first_name), sp.getString(LoginActivity.NAME,"")));
          infoSettings.add(new Info("Email", sp.getString(LoginActivity.EMAIL,"")));
-         infoSettings.add(new Info(getResources().getString(R.string.phone), sp.getString(LoginActivity.PHONE,"")));
-         infoSettings.add(new Info(getResources().getString(R.string.address), sp.getString(LoginActivity.ADDRESS,"")));
+         infoSettings.add(new Info(getResources().getString(R.string.register_field_phone), sp.getString(LoginActivity.PHONE,"")));
+         infoSettings.add(new Info(getResources().getString(R.string.register_field_address), sp.getString(LoginActivity.ADDRESS,"")));
     }
 
     public void setList() {

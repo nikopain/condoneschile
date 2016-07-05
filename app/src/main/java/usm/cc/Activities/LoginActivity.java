@@ -8,14 +8,17 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import usm.cc.R;
 
 public class LoginActivity extends AppCompatActivity {
-    EditText nameText,lastnameText,phoneText,emailText,pcText,cityText,addressText;
-    Button register,exit;
-    //Establecemos las llaves para almacenar los datos del usuario y poder recuperarlos en cualquier actividad
+    EditText nameText, lastnameText, phoneText, emailText, pcText, cityText, addressText;
+    Button buttonBack, buttonNext, buttonRegister;
+    LinearLayout panelOne, panelTwo;
+
+    // Definir llaves para almacenar los datos del usuario y poder recuperarlos en cualquier actividad.
     public static final String MyPREFERENCES =  "MyPrefs";
     public static final String NAME = "nameKey";
     public static final String LASTNAME = "lastnameKey";
@@ -33,23 +36,27 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         sharedPreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
 
-        if(sharedPreferences.getBoolean(LOGGED_IN,false)){
-            Intent in = new Intent(LoginActivity.this,ShoppingActivity.class);
+        if (sharedPreferences.getBoolean(LOGGED_IN, false)){
+            Intent in = new Intent(LoginActivity.this, ShoppingActivity.class);
             startActivity(in);
         }
-        nameText = (EditText) findViewById(R.id.nameText);
-        lastnameText = (EditText) findViewById(R.id.lastnameText);
-        emailText = (EditText) findViewById(R.id.emailText);
-        phoneText = (EditText) findViewById(R.id.phoneText);
-        addressText = (EditText) findViewById(R.id.addressText);
-        cityText= (EditText) findViewById(R.id.cityText);
-        pcText = (EditText) findViewById(R.id.postalcodeText);
 
-        register = (Button) findViewById(R.id.register);
-        exit = (Button) findViewById(R.id.exit);
+        nameText = (EditText) findViewById(R.id.field_first_name);
+        lastnameText = (EditText) findViewById(R.id.field_last_name);
+        emailText = (EditText) findViewById(R.id.field_email);
+        phoneText = (EditText) findViewById(R.id.field_phone);
+        addressText = (EditText) findViewById(R.id.field_address);
+        cityText= (EditText) findViewById(R.id.field_city);
+        pcText = (EditText) findViewById(R.id.field_postal_code);
 
-        register.setOnClickListener(new View.OnClickListener(){
+        buttonBack = (Button) findViewById(R.id.button_back);
+        buttonNext = (Button) findViewById(R.id.button_next);
+        buttonRegister = (Button) findViewById(R.id.button_save);
 
+        panelOne = (LinearLayout) findViewById(R.id.panel_one);
+        panelTwo = (LinearLayout) findViewById(R.id.panel_two);
+
+        buttonRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(nameText.length()>0 && lastnameText.length()>0 && emailText.length()>0
@@ -71,7 +78,7 @@ public class LoginActivity extends AppCompatActivity {
                     editor.putString(PHONE, ph);
                     editor.putString(ADDRESS, adrs);
                     editor.putString(POSTALCODE, pc);
-                    //validar lo anterior
+                    // validar lo anterior
                     if (true)
                         editor.putBoolean(LOGGED_IN, true);
                     editor.commit();
@@ -80,12 +87,19 @@ public class LoginActivity extends AppCompatActivity {
                     startActivity(in);
                 }
                 else{
-                    Toast.makeText(getApplicationContext(),getResources().getString(R.string.fillFields),Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),getResources().getString(R.string.register_indicator_fill_fields),Toast.LENGTH_SHORT).show();
                 }
             }
         });
     }
-    public void exit(View view){
-        finish();
+
+    public void next(View view) {
+        panelOne.setVisibility(View.GONE);
+        panelTwo.setVisibility(View.VISIBLE);
+    }
+
+    public void back(View view) {
+        panelTwo.setVisibility(View.GONE);
+        panelOne.setVisibility(View.VISIBLE);
     }
 }

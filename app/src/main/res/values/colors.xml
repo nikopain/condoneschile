@@ -17,13 +17,15 @@
 
     <!-- Colores de cada elemento del listado de productos -->
     <color name="background_bottom_bar">#EEEEEE</color>
+    <color name="background_button_primary">#F5661E</color>
+    <color name="background_button_secondary">#29272B</color>
+    <color name="background_button_tertiary">#777777</color>
     <color name="background_content">#FFFFFF</color>
     <color name="background_content_darker">#EEEEEE</color>
     <color name="background_product_button_add_to_cart">#DDDDDD</color>
     <color name="background_secondary">#2D2E3B</color>
     <color name="background_shopping_cart_button_delete">#EA5A4F</color>
     <color name="background_shopping_cart_button_edit">#CCCCCC</color>
-    <color name="background_shopping_cart_button_send">#29272B</color>
 
     <color name="border_content">#EDE7F6</color>
     <color name="border_content_darker">#BDBDBD</color>
@@ -43,6 +45,7 @@
     <color name="text_product_name">#212121</color>
     <color name="text_product_stock">#888888</color>
     <color name="text_product_stock_label">#212121</color>
+    <color name="text_register_button_text">#AAAAAA</color>
     <color name="text_shopping_cart_button_send">#FFFFFF</color>
     <color name="text_shopping_cart_item_units">#009CFF</color>
     <color name="text_shopping_cart_title">#757575</color>

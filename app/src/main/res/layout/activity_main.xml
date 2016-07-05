@@ -24,8 +24,8 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/exit"
-        android:id="@+id/exit"
+        android:text="@string/register_button_exit"
+        android:id="@+id/button_exit"
         android:layout_toLeftOf="@+id/centerPoint"
         android:layout_below="@id/fragmentContainerLayout"/>
     <TextView

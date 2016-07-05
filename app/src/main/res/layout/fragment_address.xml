@@ -30,7 +30,7 @@
                 android:id="@+id/addressTextInput"
                 android:textColorHint="#757575">
                 <AutoCompleteTextView
-                    android:id="@+id/addressText"
+                    android:id="@+id/field_address"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Dirección"
@@ -48,7 +48,7 @@
                 android:textColorHint="#757575">
 
                 <AutoCompleteTextView
-                    android:id="@+id/cityText"
+                    android:id="@+id/field_city"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Ciudad"

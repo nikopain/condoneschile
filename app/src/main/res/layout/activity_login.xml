@@ -1,118 +1,146 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".Activities.LoginActivity">
+    android:background="@color/background_secondary"
+    android:orientation="vertical"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp"
+    android:paddingTop="50dp">
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="30dp"
         android:id="@+id/logo"
-        android:src="@drawable/logox2"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp"
-        android:layout_marginBottom="20dp"/>
+        android:src="@drawable/logox2"/>
 
-    <EditText
+    <LinearLayout
+        android:id="@+id/panel_one"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/name"
-        android:id="@+id/nameText"
-        android:layout_below="@+id/logo"
-        android:inputType="textPersonName"
-        android:layout_marginLeft="@dimen/activity_horizontal_margin"
-        android:layout_toLeftOf="@+id/centerPoint"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/centerPoint"
-        android:layout_below="@+id/logo"
-        android:layout_centerHorizontal="true"/>
-    <EditText
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/field_first_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_weight="1"
+                android:hint="@string/register_field_first_name"
+                android:inputType="textPersonName"
+                android:textSize="18sp"/>
+
+            <EditText
+                android:id="@+id/field_last_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginStart="5dp"
+                android:layout_weight="1"
+                android:hint="@string/register_field_last_name"
+                android:inputType="textPersonName"
+                android:textSize="18sp"/>
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/field_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:hint="@string/register_field_email"
+            android:inputType="textEmailAddress"
+            android:textSize="18sp"/>
+
+        <EditText
+            android:id="@+id/field_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:hint="@string/register_field_phone"
+            android:inputType="phone"
+            android:textSize="18sp"/>
+
+        <Button
+            android:id="@+id/button_next"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="4dp"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="4dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/background_button_tertiary"
+            android:text="@string/register_button_next"
+            android:textSize="16sp"
+            android:onClick="next"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/panel_two"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/lastname"
-        android:inputType="textPersonName"
-        android:id="@+id/lastnameText"
-        android:layout_below="@id/logo"
-        android:layout_toRightOf="@id/centerPoint"
-        android:layout_marginRight="@dimen/activity_horizontal_margin" />
+        android:orientation="vertical"
+        android:visibility="gone">
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textEmailAddress"
-        android:id="@+id/emailText"
-        android:hint="Email(*)"
-        android:layout_marginRight="@dimen/activity_horizontal_margin"
-        android:layout_marginLeft="@dimen/activity_horizontal_margin"
-        android:layout_below="@+id/nameText"/>
+        <EditText
+            android:id="@+id/field_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/register_field_address"
+            android:inputType="textPostalAddress"
+            android:textSize="18sp"/>
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/phoneText"
-        android:inputType="phone"
-        android:hint="@string/phone"
-        android:layout_marginRight="@dimen/activity_horizontal_margin"
-        android:layout_marginLeft="@dimen/activity_horizontal_margin"
-        android:layout_below="@+id/emailText"/>
+        <EditText
+            android:id="@+id/field_city"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:hint="@string/register_field_city"
+            android:inputType="textPostalAddress"
+            android:textSize="18sp"/>
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/addressText"
-        android:inputType="textPostalAddress"
-        android:layout_marginRight="@dimen/activity_horizontal_margin"
-        android:layout_marginLeft="@dimen/activity_horizontal_margin"
-        android:hint="@string/address"
-        android:layout_below="@+id/phoneText" />
+        <EditText
+            android:id="@+id/field_postal_code"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:hint="@string/register_field_postal_code"
+            android:inputType="textPostalAddress"
+            android:textSize="18sp"/>
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/cityText"
-        android:inputType="textPostalAddress"
-        android:layout_marginRight="@dimen/activity_horizontal_margin"
-        android:layout_marginLeft="@dimen/activity_horizontal_margin"
-        android:hint="@string/city"
-        android:layout_below="@+id/addressText" />
+        <Button
+            android:id="@+id/button_save"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="4dp"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="4dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/background_button_primary"
+            android:text="@string/register_button_save"
+            android:textSize="16sp"
+            android:textStyle="bold"/>
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="@dimen/activity_horizontal_margin"
-        android:layout_marginLeft="@dimen/activity_horizontal_margin"
-        android:id="@+id/postalcodeText"
-        android:inputType="textPostalAddress"
-        android:hint="@string/postalCode"
-        android:layout_below="@+id/cityText" />
-
-    <Button
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Exit"
-        android:id="@+id/exit"
-        android:onClick="exit"
-        android:layout_toLeftOf="@id/centerPoint"
-        android:layout_marginLeft="@dimen/activity_horizontal_margin"
-        android:layout_below="@+id/postalcodeText" />
-
-    <Button
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/register"
-        android:id="@+id/register"
-        android:layout_marginRight="@dimen/activity_horizontal_margin"
-        android:layout_alignBottom="@+id/exit"
-        android:layout_toRightOf="@+id/centerPoint" />
-
-</RelativeLayout>
+        <Button
+            android:id="@+id/button_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="40dp"
+            android:background="@color/background_secondary"
+            android:text="@string/register_button_back"
+            android:textSize="12sp"
+            android:textColor="@color/text_register_button_text"
+            android:onClick="back"/>
+    </LinearLayout>
+</LinearLayout>

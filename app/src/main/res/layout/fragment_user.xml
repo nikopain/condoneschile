@@ -76,7 +76,7 @@
                 android:textColorHint="#757575">
 
                 <AutoCompleteTextView
-                    android:id="@+id/emailText"
+                    android:id="@+id/field_email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/prompt_email"
@@ -95,7 +95,7 @@
                 android:textColorHint="#757575">
 
                 <AutoCompleteTextView
-                    android:id="@+id/phoneText"
+                    android:id="@+id/field_phone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Teléfono"
