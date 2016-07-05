@@ -31,9 +31,8 @@ public class ProductsCartAdapter extends ArrayAdapter<Product> {
         TextView productBrandCircle = (TextView) v.findViewById(R.id.product_brand_circle);
         TextView productUnits = (TextView) v.findViewById(R.id.units);
         TextView productName = (TextView) v.findViewById(R.id.nameProduct);
-        productName.setText(products.get(position).getNombre());
-        productBrandCircle.setText(products.get(position).getMarca().substring(0, 1).toUpperCase());
-        productUnits.setText(String.valueOf(products.get(position).getActual()));
+        productName.setText(products.get(position).getName());
+        productBrandCircle.setText(products.get(position).getBrand().substring(0, 1).toUpperCase());
         return v;
     }
 }

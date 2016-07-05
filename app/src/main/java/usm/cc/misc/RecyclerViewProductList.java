@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 import static android.widget.AbsListView.OnScrollListener.SCROLL_STATE_TOUCH_SCROLL;
 import static android.widget.AbsListView.OnScrollListener.SCROLL_STATE_FLING;
 
-public class SnappingRecyclerView extends RecyclerView {
+public class RecyclerViewProductList extends RecyclerView {
     private boolean mSnapEnabled = false;
     private boolean mUserScrolling = false;
     private boolean mScrolling = false;
@@ -31,11 +31,11 @@ public class SnappingRecyclerView extends RecyclerView {
      */
     private boolean firstChildCentered = false;
 
-    public SnappingRecyclerView(Context context) {
+    public RecyclerViewProductList(Context context) {
         super(context);
     }
 
-    public SnappingRecyclerView(Context context, AttributeSet attrs) {
+    public RecyclerViewProductList(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 

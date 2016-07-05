@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import usm.cc.R;
+import usm.cc.View.ProductListActivity;
 
 public class LoginActivity extends AppCompatActivity {
     EditText nameText,lastnameText,phoneText,emailText,pcText,cityText,addressText;
@@ -30,7 +31,10 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
+        if(sharedPreferences.getBoolean(LOGGED_IN,false)){
+            Intent in = new Intent(LoginActivity.this,ProductListActivity.class);
+            startActivity(in);
+        }
         nameText = (EditText) findViewById(R.id.nameText);
         lastnameText = (EditText) findViewById(R.id.lastnameText);
         emailText = (EditText) findViewById(R.id.emailText);
@@ -42,10 +46,7 @@ public class LoginActivity extends AppCompatActivity {
         register = (Button) findViewById(R.id.register);
         exit = (Button) findViewById(R.id.exit);
         sharedPreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
-        if(sharedPreferences.getBoolean(LOGGED_IN,false)){
-            Intent in = new Intent(LoginActivity.this,ProductListActivity.class);
-            startActivity(in);
-        }
+
         register.setOnClickListener(new View.OnClickListener(){
 
             @Override

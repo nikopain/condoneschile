@@ -25,7 +25,7 @@
 
         <!-- Información del producto -->
         <RelativeLayout
-            android:layout_above="@+id/product_add_buttons"
+            android:layout_above="@+id/product_add_to_cart_section"
             android:layout_below="@id/product_brand_border"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
@@ -60,7 +60,6 @@
                 android:background="@drawable/circle_unknown"
                 android:gravity="center"
                 android:paddingBottom="2dp"
-                android:text="@string/brand_circle_unknown"
                 android:textColor="@color/text_product_brand_circle"
                 android:textSize="20sp"
                 android:textStyle="bold"/>
@@ -81,7 +80,7 @@
 
         <!-- Añadir al carro de compras -->
         <LinearLayout
-            android:id="@id/product_add_buttons"
+            android:id="@id/product_add_to_cart_section"
             android:layout_alignParentBottom="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -89,40 +88,40 @@
             android:orientation="horizontal"
             android:paddingTop="1dp">
 
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:id="@+id/product_button_5"
+            <LinearLayout
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
                 android:background="@drawable/border_right_gray_bg_gray"
                 android:gravity="center"
-                android:padding="10dp"
-                android:text="+5"
-                android:textColor="@color/text_product_add_button"
-                android:textSize="24sp"/>
+                android:padding="10dp">
 
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/border_right_gray_bg_gray"
-                android:gravity="center"
-                android:padding="10dp"
-                android:id="@+id/product_button_10"
-                android:text="+10"
-                android:textColor="@color/text_product_add_button"
-                android:textSize="24sp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/product_stock_label"
+                    android:textColor="@color/text_product_stock_label"
+                    android:textSize="18sp"/>
 
-            <TextView
+                <TextView
+                    android:id="@+id/product_stock"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/text_product_stock"
+                    android:textSize="18sp"/>
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/button_add_to_cart"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:background="@color/background_product_button_add_to_cart"
                 android:gravity="center"
-                android:padding="10dp"
-                android:id="@+id/product_button_50"
-                android:text="+50"
-                android:textColor="@color/text_product_add_button"
-                android:textSize="24sp"/>
+                android:padding="12dp"
+                android:text="@string/product_button_add_to_cart"
+                android:textAllCaps="true"
+                android:textColor="@color/text_product_button_add_to_cart"
+                android:textSize="15sp"/>
         </LinearLayout>
     </RelativeLayout>
 </android.support.v7.widget.CardView>
