@@ -72,6 +72,7 @@ public class ShoppingActivity extends AppCompatActivity {
                 // The user selected item number one.
                 if(menuItemId == R.id.bottom_bar_item_settings){
                     Intent i = new Intent(ShoppingActivity.this, SettingsActivity.class);
+                    i.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                     startActivity(i);
                 }
             }

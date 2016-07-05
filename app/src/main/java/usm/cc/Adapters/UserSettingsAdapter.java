@@ -32,7 +32,7 @@ public class UserSettingsAdapter extends ArrayAdapter<Info>{
 
         TextView nameTextView = (TextView) rowView.findViewById(R.id.Text);
         TextView valueTextView = (TextView) rowView.findViewById(R.id.value);
-        nameTextView.setText(info[position].getText());
+        nameTextView.setText(info[position].getText() + ":");
         valueTextView.setText(info[position].getValue());
 
 

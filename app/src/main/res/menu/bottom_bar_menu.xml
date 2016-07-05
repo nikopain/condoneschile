@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/bottom_bar_item_buy"
+        android:id="@+id/bottom_bar_item_shopping"
         android:icon="@drawable/icon_shopping_cart"
         android:title="Productos" />
 
