@@ -15,7 +15,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
         <activity
-            android:name=".View.LoginActivity"
+            android:name=".Activities.LoginActivity"
+            android:screenOrientation="portrait"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,10 +24,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".View.CarritoActivity" />
-        <activity android:name=".View.Login2Activity" />
-        <activity android:name=".View.ProductListActivity" />
-        <activity android:name=".View.SettingsActivity"></activity>
+        <activity android:name=".Activities.ShoppingActivity"
+            android:label="Productos"
+            android:screenOrientation="portrait" />
+        <activity android:name=".Activities.SettingsActivity"></activity>
     </application>
 
 </manifest>

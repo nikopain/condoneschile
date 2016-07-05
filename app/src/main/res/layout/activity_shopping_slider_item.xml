@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_gravity="center"
+    android:layout_width="320dp"
+    android:layout_height="match_parent"
+    card_view:cardBackgroundColor="@color/background_content"
+    card_view:cardPreventCornerOverlap="false"
+    card_view:cardCornerRadius="10dp"
+    card_view:cardElevation="0dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Borde superior con el color de la marca -->
+        <View
+            android:id="@+id/product_brand_border"
+            android:layout_alignParentTop="true"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="@color/brand_unknown" />
+
+        <!-- Información del producto -->
+        <RelativeLayout
+            android:layout_above="@+id/product_add_to_cart_section"
+            android:layout_below="@id/product_brand_border"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:padding="14dp">
+
+            <TextView
+                android:id="@+id/product_brand"
+                android:layout_alignParentTop="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textColor="@color/text_product_brand"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/product_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/product_brand"
+                android:layout_marginTop="-2dp"
+                android:textColor="@color/text_product_name"
+                android:textSize="18sp"/>
+
+            <TextView
+                android:id="@+id/product_brand_circle"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/circle_unknown"
+                android:gravity="center"
+                android:paddingBottom="2dp"
+                android:textColor="@color/text_product_brand_circle"
+                android:textSize="20sp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/product_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/product_brand_circle"
+                android:layout_marginTop="14dp"
+                android:background="@drawable/border_top_gray_bg_white"
+                android:ellipsize="end"
+                android:maxLines="4"
+                android:paddingTop="12dp"
+                android:textColor="@color/text_product_description"
+                android:textSize="15sp"/>
+        </RelativeLayout>
+
+        <!-- Añadir al carro de compras -->
+        <LinearLayout
+            android:id="@id/product_add_to_cart_section"
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/border_top_gray_bg_gray"
+            android:orientation="horizontal"
+            android:paddingTop="1dp">
+
+            <LinearLayout
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/border_right_gray_bg_gray"
+                android:gravity="center"
+                android:padding="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/product_stock_label"
+                    android:textColor="@color/text_product_stock_label"
+                    android:textSize="18sp"/>
+
+                <TextView
+                    android:id="@+id/product_stock"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/text_product_stock"
+                    android:textSize="18sp"/>
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/button_add_to_cart"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/background_product_button_add_to_cart"
+                android:gravity="center"
+                android:padding="12dp"
+                android:text="@string/product_button_add_to_cart"
+                android:textAllCaps="true"
+                android:textColor="@color/text_product_button_add_to_cart"
+                android:textSize="15sp"/>
+        </LinearLayout>
+    </RelativeLayout>
+</android.support.v7.widget.CardView>

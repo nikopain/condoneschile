@@ -8,20 +8,42 @@
     <string name="brand_circle_one">O</string>
     <string name="brand_circle_trojan">T</string>
     <string name="brand_circle_unknown">\?</string>
+    <string name="product_button_add_to_cart">Añadir al carro</string>
+    <string name="product_button_edit">Modificar pedido</string>
     <string name="product_slider_indicator">de</string>
+    <string name="product_stock_label">#</string>
+    <string name="shopping_cart_button_send">Realizar pedido</string>
+    <string name="shopping_cart_dialog_button_accept">OK</string>
+    <string name="shopping_cart_dialog_button_add">Añadir</string>
+    <string name="shopping_cart_dialog_button_cancel">Cancelar</string>
+    <string name="shopping_cart_dialog_button_edit">Modificar</string>
+    <string name="shopping_cart_dialog_message_order_sent">Hemos recibido tu pedido.</string>
+    <string name="shopping_cart_dialog_title_add_to_cart">Seleccionar unidades</string>
+    <string name="shopping_cart_dialog_title_order_sent">Gracias!</string>
+    <string name="shopping_cart_empty">No tienes productos en tu carro de compras.</string>
+    <string name="shopping_cart_loader_message">Espere un momento&#8230;</string>
+    <string name="shopping_cart_loader_title">Cargando</string>
     <string name="shopping_cart_title">Carro de compras</string>
+    <string name="shopping_cart_total">$%1$s</string>
+    <string name="shopping_cart_total_label">Total</string>
+    <string name="shopping_cart_units_label">unids.</string>
 
+    <!-- Registro de usuario -->
+    <string name="register_button_back">Regresar</string>
+    <string name="register_button_exit">En otro momento</string>
+    <string name="register_button_next">Siguiente</string>
+    <string name="register_button_save">Guardar</string>
+    <string name="register_field_address">Dirección</string>
+    <string name="register_field_city">Ciudad</string>
+    <string name="register_field_email">Correo electrónico</string>
+    <string name="register_field_first_name">Nombre</string>
+    <string name="register_field_last_name">Apellido</string>
+    <string name="register_field_phone">Teléfono</string>
+    <string name="register_field_postal_code">Código postal</string>
+    <string name="register_indicator_fill_fields">Debes completar todos los campos.</string>
 
-    <!-- Strings related to login -->
+    <!-- BORRAR -->
     <string name="prompt_email">Email</string>
-    <string name="prompt_password">Password (optional)</string>
-    <string name="action_sign_in">Sign in or register</string>
-    <string name="action_sign_in_short">Sign in</string>
-    <string name="error_invalid_email">This email address is invalid</string>
-    <string name="error_invalid_password">This password is too short</string>
-    <string name="error_incorrect_password">This password is incorrect</string>
-    <string name="error_field_required">This field is required</string>
-    <string name="permission_rationale">"Contacts permissions are needed for providing email
-        completions."
-    </string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="next">Next</string>
 </resources>
