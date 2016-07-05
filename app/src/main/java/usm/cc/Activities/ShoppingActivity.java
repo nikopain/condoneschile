@@ -1,4 +1,4 @@
-package usm.cc.View;
+package usm.cc.Activities;
 
 import android.content.Context;
 import android.content.Intent;
@@ -27,8 +27,6 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-import usm.cc.Activities.LoginActivity;
-import usm.cc.Activities.SettingsActivity;
 import usm.cc.Adapters.ProductsAdapter;
 import usm.cc.Model.Product;
 import usm.cc.Model.ProductsResponse;
@@ -39,9 +37,9 @@ import usm.cc.misc.RecyclerViewProductList;
 import usm.cc.network.ApiClient;
 import usm.cc.network.ApiInterface;
 
-public class ProductListActivity extends AppCompatActivity {
+public class ShoppingActivity extends AppCompatActivity {
 
-    private String TAG = ProductListActivity.class.getSimpleName();
+    private String TAG = ShoppingActivity.class.getSimpleName();
     private User usuario;
 
     private BottomBar bottomBar;
@@ -64,7 +62,7 @@ public class ProductListActivity extends AppCompatActivity {
             public void onMenuTabSelected(@IdRes int menuItemId) {
                 // The user selected item number one.
                 if(menuItemId == R.id.bottom_bar_item_settings){
-                    Intent i = new Intent(ProductListActivity.this, SettingsActivity.class);
+                    Intent i = new Intent(ShoppingActivity.this, SettingsActivity.class);
                     startActivity(i);
                 }
             }
@@ -160,7 +158,7 @@ public class ProductListActivity extends AppCompatActivity {
                 }
 
                 // añadir productos al slider e inicializar carro de compras (dentro de ProductsAdapter)
-                productSlider.setAdapter(new ProductsAdapter(products, shoppingCart, R.layout.home_slider_item, ProductListActivity.this));
+                productSlider.setAdapter(new ProductsAdapter(products, shoppingCart, R.layout.home_slider_item, ShoppingActivity.this));
 
                 // mostrar posición actual del slider
                 productSlider.addOnScrollListener(new RecyclerView.OnScrollListener() {

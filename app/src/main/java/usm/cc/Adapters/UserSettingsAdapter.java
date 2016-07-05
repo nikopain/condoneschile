@@ -7,11 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import java.util.List;
-
-import usm.cc.Model.Condom;
 import usm.cc.Model.Info;
-import usm.cc.Model.User;
 import usm.cc.R;
 
 /**

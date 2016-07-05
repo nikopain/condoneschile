@@ -11,7 +11,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import usm.cc.R;
-import usm.cc.View.ProductListActivity;
 
 public class LoginActivity extends AppCompatActivity {
     EditText nameText,lastnameText,phoneText,emailText,pcText,cityText,addressText;
@@ -27,6 +26,7 @@ public class LoginActivity extends AppCompatActivity {
     public static final String ADDRESS= "addresslKey";
     public static final String LOGGED_IN= "loggedinKey";
     SharedPreferences sharedPreferences;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,7 +34,7 @@ public class LoginActivity extends AppCompatActivity {
         sharedPreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
 
         if(sharedPreferences.getBoolean(LOGGED_IN,false)){
-            Intent in = new Intent(LoginActivity.this,ProductListActivity.class);
+            Intent in = new Intent(LoginActivity.this,ShoppingActivity.class);
             startActivity(in);
         }
         nameText = (EditText) findViewById(R.id.nameText);
@@ -76,7 +76,7 @@ public class LoginActivity extends AppCompatActivity {
                         editor.putBoolean(LOGGED_IN, true);
                     editor.commit();
 
-                    Intent in = new Intent(LoginActivity.this, ProductListActivity.class);
+                    Intent in = new Intent(LoginActivity.this, ShoppingActivity.class);
                     startActivity(in);
                 }
                 else{
