@@ -24,7 +24,7 @@
             app:layout_scrollFlags="scroll|snap">
 
             <!-- Indicador de posición del slider -->
-            <include layout="@layout/home_top_bar" />
+            <include layout="@layout/activity_shopping_top_bar" />
 
             <!-- Slider de productos -->
             <usm.cc.misc.RecyclerViewProductList

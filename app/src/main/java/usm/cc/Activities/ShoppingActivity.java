@@ -47,7 +47,7 @@ public class ShoppingActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.home_activity);
+        setContentView(R.layout.activity_shopping);
 
         SharedPreferences sp = getSharedPreferences(LoginActivity.MyPREFERENCES, Context.MODE_PRIVATE);
         Toast.makeText(getApplicationContext(),getResources().getString(R.string.welcome)+" "+sp.getString(LoginActivity.NAME,""),Toast.LENGTH_SHORT).show();
@@ -158,7 +158,7 @@ public class ShoppingActivity extends AppCompatActivity {
                 }
 
                 // añadir productos al slider e inicializar carro de compras (dentro de ProductsAdapter)
-                productSlider.setAdapter(new ProductsAdapter(products, shoppingCart, R.layout.home_slider_item, ShoppingActivity.this));
+                productSlider.setAdapter(new ProductsAdapter(products, shoppingCart, R.layout.activity_shopping_slider_item, ShoppingActivity.this));
 
                 // mostrar posición actual del slider
                 productSlider.addOnScrollListener(new RecyclerView.OnScrollListener() {

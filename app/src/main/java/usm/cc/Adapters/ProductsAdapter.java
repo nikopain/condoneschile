@@ -6,8 +6,6 @@ import android.content.DialogInterface;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
-import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +13,6 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.NumberPicker;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -67,7 +64,7 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.Produc
         this.productsInBasket = new ArrayList<>();
 
         this.shoppingCart = shoppingCart;
-        this.shoppingAdapter = new ShoppingCartAdapter(productsInBasket, R.layout.home_shopping_item, context);
+        this.shoppingAdapter = new ShoppingCartAdapter(productsInBasket, R.layout.activity_shopping_cart_item, context);
 
         // vistas del carro de compras que se deben ocultar y mostrar según su contenido
         TextView emptyView = (TextView) ((Activity)context).getWindow().getDecorView().findViewById(R.id.shopping_cart_empty);
@@ -144,7 +141,7 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.Produc
             public void onClick(View view) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(context);
                 LayoutInflater inflater = LayoutInflater.from(context);
-                final View dialogLayout = inflater.inflate(R.layout.home_shopping_dialog, null);
+                final View dialogLayout = inflater.inflate(R.layout.activity_shopping_dialog, null);
 
                 // números que se mostrarán en el NumberPicker
                 String[] numbers = new String[item.getStock() / 5];

@@ -137,7 +137,7 @@ public class ShoppingCartAdapter extends RecyclerSwipeAdapter<ShoppingCartAdapte
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(context);
                 LayoutInflater inflater = LayoutInflater.from(context);
-                final View dialog_layout = inflater.inflate(R.layout.home_shopping_dialog, null);
+                final View dialog_layout = inflater.inflate(R.layout.activity_shopping_dialog, null);
 
                 // números que se mostrarán en el NumberPicker
                 String[] numbers = new String[item.getStock() / 5];
