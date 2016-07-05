@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.NumberPicker;
 import android.widget.TextView;
 
@@ -216,6 +217,12 @@ public class ShoppingCartAdapter extends RecyclerSwipeAdapter<ShoppingCartAdapte
     @Override
     public int getItemCount() {
         return productsInBasket.size();
+    }
+
+    // Para activar las animaciones al utilizar notifyDataSetChanged().
+    @Override
+    public long getItemId(int position) {
+        return productsInBasket.get(position).hashCode();
     }
 
     @Override

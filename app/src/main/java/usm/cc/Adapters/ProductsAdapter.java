@@ -20,6 +20,7 @@ import java.util.List;
 import usm.cc.Model.Product;
 import usm.cc.Model.ProductBasket;
 import usm.cc.R;
+import usm.cc.misc.LayoutManagerShoppingCart;
 import usm.cc.misc.RecyclerViewShopppingCart;
 
 public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ProductViewHolder> {
@@ -73,6 +74,7 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.Produc
 
         // configurar carro de compras
         shoppingAdapter.setTotalView(totalView);
+        shoppingAdapter.setHasStableIds(true);
         shoppingCart.setEmptyView(emptyView);
         shoppingCart.setTotalSectionView(totalSectionView);
         shoppingCart.setLayoutManager(new LinearLayoutManager(context));
@@ -181,10 +183,8 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.Produc
                         // añadir producto al carro de compras
                         if (!found) {
                             newProduct = new ProductBasket(item.getId(), item.getBrand(), item.getName(), item.getStock(), pickedValue);
-                            //productsInBasket.add(0, newProduct);
-                            //shoppingAdapter.notifyItemInserted(0);
-                            productsInBasket.add(newProduct);
-                            shoppingAdapter.notifyItemInserted(productsInBasket.size() - 1);
+                            productsInBasket.add(0, newProduct);
+                            shoppingAdapter.notifyDataSetChanged();
                             shoppingCart.scrollToPosition(0);
                         }
 
@@ -197,6 +197,7 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.Produc
             }
         });
     }
+
     // Devolvemos el tamaño del conjunto de datos.
     @Override
     public int getItemCount() {

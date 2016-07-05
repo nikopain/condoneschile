@@ -21,6 +21,8 @@
     <string name="shopping_cart_dialog_title_add_to_cart">Seleccionar unidades</string>
     <string name="shopping_cart_dialog_title_order_sent">Gracias!</string>
     <string name="shopping_cart_empty">No tienes productos en tu carro de compras.</string>
+    <string name="shopping_cart_loader_message">Espere un momento&#8230;</string>
+    <string name="shopping_cart_loader_title">Cargando</string>
     <string name="shopping_cart_title">Carro de compras</string>
     <string name="shopping_cart_total">$%1$s</string>
     <string name="shopping_cart_total_label">Total</string>

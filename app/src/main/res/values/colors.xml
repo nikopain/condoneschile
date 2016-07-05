@@ -16,13 +16,14 @@
     <item name="white" type="color">#FFFFFF</item>
 
     <!-- Colores de cada elemento del listado de productos -->
+    <color name="background_bottom_bar">#EEEEEE</color>
     <color name="background_content">#FFFFFF</color>
     <color name="background_content_darker">#EEEEEE</color>
     <color name="background_product_button_add_to_cart">#DDDDDD</color>
     <color name="background_secondary">#2D2E3B</color>
     <color name="background_shopping_cart_button_delete">#EA5A4F</color>
     <color name="background_shopping_cart_button_edit">#CCCCCC</color>
-    <color name="background_shopping_cart_button_send">#4AA974</color>
+    <color name="background_shopping_cart_button_send">#29272B</color>
 
     <color name="border_content">#EDE7F6</color>
     <color name="border_content_darker">#BDBDBD</color>

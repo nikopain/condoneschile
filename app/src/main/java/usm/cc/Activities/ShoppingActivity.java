@@ -1,17 +1,24 @@
 package usm.cc.Activities;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.design.widget.Snackbar;
+import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -42,21 +49,23 @@ public class ShoppingActivity extends AppCompatActivity {
     private String TAG = ShoppingActivity.class.getSimpleName();
     private User usuario;
 
-    private BottomBar bottomBar;
+    private BottomBar bottomBar; // barra de navegación inferior
+    private LinearLayout topPanel; // contenedor del menu superior y del slider de productos
+    private ProgressDialog progress; // mensaje de carga
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shopping);
 
-        SharedPreferences sp = getSharedPreferences(LoginActivity.MyPREFERENCES, Context.MODE_PRIVATE);
-        Toast.makeText(getApplicationContext(),getResources().getString(R.string.welcome)+" "+sp.getString(LoginActivity.NAME,""),Toast.LENGTH_SHORT).show();
-        // establecemos el tipo de layout del RecyclerView
+        // SharedPreferences sp = getSharedPreferences(LoginActivity.MyPREFERENCES, Context.MODE_PRIVATE);
+        // Toast.makeText(getApplicationContext(), getResources().getString(R.string.welcome) + " " + sp.getString(LoginActivity.NAME, ""), Toast.LENGTH_SHORT).show();
 
-
-        // Configurar barra de navegación inferior
+        // Configurar barra de navegación inferior.
         bottomBar = BottomBar.attach(this, savedInstanceState);
         bottomBar.setItems(R.menu.bottom_bar_menu);
+        bottomBar.getBar().setBackgroundResource(R.drawable.background_top_bar);
+        bottomBar.setActiveTabColor("#0060ff");
         bottomBar.setOnMenuTabClickListener(new OnMenuTabClickListener() {
             @Override
             public void onMenuTabSelected(@IdRes int menuItemId) {
@@ -75,6 +84,9 @@ public class ShoppingActivity extends AppCompatActivity {
             }
         });
 
+        topPanel = (LinearLayout) findViewById(R.id.shopping_top_panel);
+
+        initLoader();
         initTopBar();
         initSliders();
     }
@@ -103,6 +115,22 @@ public class ShoppingActivity extends AppCompatActivity {
         }
     }
 
+    private void initLoader() {
+        // Mostrar mensaje de carga.
+        progress = new ProgressDialog(this);
+        progress.setTitle(R.string.shopping_cart_loader_title);
+        progress.setMessage(getString(R.string.shopping_cart_loader_message));
+        progress.setCancelable(false);
+
+        // Modificar posición del mensaje de carga.
+        progress.getWindow().setGravity(Gravity.TOP);
+        WindowManager.LayoutParams params = progress.getWindow().getAttributes();
+        params.y = 120;
+        progress.getWindow().setAttributes(params);
+
+        progress.show();
+    }
+
     private void initTopBar() {
         ImageButton buttonRefresh = (ImageButton) findViewById(R.id.button_refresh);
         ImageButton buttonHistory = (ImageButton) findViewById(R.id.button_history);
@@ -110,7 +138,7 @@ public class ShoppingActivity extends AppCompatActivity {
         buttonRefresh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Actualizar listado de productos.", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+                recreate();
             }
         });
 
@@ -176,6 +204,10 @@ public class ShoppingActivity extends AppCompatActivity {
                         }
                     }
                 });
+
+                // ocultar mensaje de carga y mostrar panel superior
+                progress.dismiss();
+                topPanel.setVisibility(View.VISIBLE);
             }
 
             @Override

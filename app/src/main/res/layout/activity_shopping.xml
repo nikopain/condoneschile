@@ -18,9 +18,11 @@
 
         <!-- Esto es lo que se va a ocultar -->
         <LinearLayout
+            android:id="@+id/shopping_top_panel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:visibility="invisible"
             app:layout_scrollFlags="scroll|snap">
 
             <!-- Indicador de posición del slider -->
@@ -67,12 +69,9 @@
                 android:layout_alignParentBottom="true"
                 android:background="@drawable/border_top_gray_bg_gray"
                 android:orientation="vertical"
-                android:padding="15dp"
-                android:paddingEnd="20dp"
-                android:paddingRight="20dp"
+                android:paddingBottom="20dp"
                 android:paddingLeft="20dp"
-                android:paddingStart="20dp"
-                android:paddingBottom="15dp"
+                android:paddingRight="20dp"
                 android:paddingTop="15dp"
                 android:visibility="gone">
 
@@ -103,8 +102,8 @@
                     android:id="@+id/button_send_order"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:background="@drawable/square_green_rounded_corners"
+                    android:layout_marginTop="14dp"
+                    android:background="@drawable/button_send_rounded_corners"
                     android:padding="15dp"
                     android:text="@string/shopping_cart_button_send"
                     android:textAllCaps="true"
@@ -120,6 +119,7 @@
                 android:layout_height="wrap_content"
                 android:layout_above="@id/shopping_cart_total_section"
                 android:layout_below="@id/shopping_cart_title"
+                android:paddingBottom="2dp"
                 app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
             <!-- Mostrar cuando el carro de compras está vacío -->
