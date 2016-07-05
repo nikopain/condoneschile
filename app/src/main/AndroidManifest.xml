@@ -26,7 +26,6 @@
         </activity>
         <activity android:name=".Activities.ProductListActivity" />
         <activity android:name=".Activities.SettingsActivity" />
-        <activity android:name=".Activities.MainActivity"></activity>
     </application>
 
 </manifest>

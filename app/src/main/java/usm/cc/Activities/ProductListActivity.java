@@ -58,6 +58,14 @@ public class ProductListActivity extends AppCompatActivity {
         // establecemos el tipo de layout del RecyclerView
 
 
+        ImageView settings = (ImageView) findViewById(R.id.icon_settings);
+        settings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent in = new Intent(ProductListActivity.this, SettingsActivity.class);
+                startActivity(in);
+            }
+        });
         final ListView productsCartListView = (ListView) findViewById(R.id.products_cart);
         productsCartAdapter = new ProductsCartAdapter(this,productArrayList);
         productsCartListView.setAdapter(productsCartAdapter);
@@ -157,22 +165,6 @@ public class ProductListActivity extends AppCompatActivity {
             public void onFailure(Call<ProductsResponse> call, Throwable t) {
                 // la solicitud falló, así que registramos el error
                 Log.e(TAG, t.toString());
-            }
-        });
-        ImageView settings = (ImageView) findViewById(R.id.icon_settings);
-        settings.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent in = new Intent(ProductListActivity.this, SettingsActivity.class);
-                startActivity(in);
-            }
-        });
-        ImageView cart = (ImageView) findViewById(R.id.icon_shopping);
-        settings.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent in = new Intent(ProductListActivity.this, LoginActivity.class);
-                startActivity(in);
             }
         });
     }

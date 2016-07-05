@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import usm.cc.Adapters.UserSettingsAdapter;
 import usm.cc.Model.Info;
 import usm.cc.R;
+import usm.cc.misc.SettingsEdit;
 
 public class SettingsActivity extends AppCompatActivity {
 
@@ -23,7 +24,7 @@ public class SettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
         getInfo();
-        setListCondoms();
+        setList();
 
     }
     private void getInfo() {
@@ -35,17 +36,20 @@ public class SettingsActivity extends AppCompatActivity {
          infoSettings.add(new Info(getResources().getString(R.string.address), sp.getString(LoginActivity.ADDRESS,"")));
     }
 
-    public void setListCondoms(){
+    public void setList() {
 
         ListView listViewUser = (ListView) findViewById(R.id.listViewUser);
-        Info[] infoArray =  infoSettings.toArray(new Info[0]);
+        Info[] infoArray = infoSettings.toArray(new Info[0]);
 
         listViewUser.setAdapter(new UserSettingsAdapter(this, infoArray));
-
-        listViewUser.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        listViewUser.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+            public boolean onLongClick(View v) {
+                new SettingsEdit(v.getContext()).show();
+
+                return false;
             }
         });
     }
+
 }
