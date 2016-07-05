@@ -1,6 +1,7 @@
 package usm.cc.View;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
@@ -27,6 +28,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 import usm.cc.Activities.LoginActivity;
+import usm.cc.Activities.SettingsActivity;
 import usm.cc.Adapters.ProductsAdapter;
 import usm.cc.Model.Product;
 import usm.cc.Model.ProductsResponse;
@@ -61,11 +63,15 @@ public class ProductListActivity extends AppCompatActivity {
             @Override
             public void onMenuTabSelected(@IdRes int menuItemId) {
                 // The user selected item number one.
+                if(menuItemId == R.id.bottom_bar_item_settings){
+                    Intent i = new Intent(ProductListActivity.this, SettingsActivity.class);
+                    startActivity(i);
+                }
             }
 
             @Override
             public void onMenuTabReSelected(final int position) {
-                if (position == 1) {
+                if (position == 0) {
                     // The user reselected item number one, scroll your content to top.
                 }
             }

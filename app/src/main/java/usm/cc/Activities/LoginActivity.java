@@ -31,6 +31,8 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        sharedPreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+
         if(sharedPreferences.getBoolean(LOGGED_IN,false)){
             Intent in = new Intent(LoginActivity.this,ProductListActivity.class);
             startActivity(in);
@@ -45,7 +47,6 @@ public class LoginActivity extends AppCompatActivity {
 
         register = (Button) findViewById(R.id.register);
         exit = (Button) findViewById(R.id.exit);
-        sharedPreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
 
         register.setOnClickListener(new View.OnClickListener(){
 
